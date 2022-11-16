@@ -1,0 +1,1 @@
+export { checkEncodedURI } from './checkEncodedURI';
