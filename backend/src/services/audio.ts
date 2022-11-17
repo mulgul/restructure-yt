@@ -18,7 +18,7 @@ export const fetchAudioInfo = async (
 	const jsonDump = await launchProcess(cmd);
 	const json: IMetadata = JSON.parse(jsonDump);
 
-	const availableFormats = await fetchAudioFromats(decodedURI);
+	const availableFormats = await fetchAudioFormats(decodedURI);
 	const formats = parseFormats(availableFormats, json.formats);
 
 	return {
@@ -31,7 +31,7 @@ export const fetchAudioInfo = async (
 	};
 };
 
-export const fetchAudioFromats = async (
+export const fetchAudioFormats = async (
 	decodedURI: string
 ): Promise<IAvailableFormats> => {
 	const cmd = `youtube-dl -F ${decodedURI} | grep audio`;
