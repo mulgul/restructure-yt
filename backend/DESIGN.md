@@ -4,7 +4,14 @@
 
 **Response:**
 ```
-
+{
+    title: string,
+    formats: string[],
+    duration: number,
+    upload_date: string,
+    views: number,
+    thumbnail_url: string,
+}
 ```
 
 Notes:
