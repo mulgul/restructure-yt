@@ -6,6 +6,7 @@
 ```
 {
     title: string,
+    channel: string,
     formats: string[],
     duration: number,
     upload_date: string,

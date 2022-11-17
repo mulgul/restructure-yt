@@ -1,7 +1,5 @@
-import { ChildProcessWithoutNullStreams, exec } from 'child_process';
+import { exec } from 'child_process';
 import util from 'util';
-
-export type ProcsType = { [key: string]: ChildProcessWithoutNullStreams };
 
 const pExec = util.promisify(exec);
 
