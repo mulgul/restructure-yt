@@ -1,18 +1,7 @@
-import express, { Request } from 'express';
-import { ParamsDictionary, Query } from 'express-serve-static-core';
+import express from 'express';
 
 import { fetchAudioInfo } from '../services/audio';
-
-type IGetRequestHandler = Request<
-	ParamsDictionary,
-	unknown,
-	unknown,
-	IAudioInfoQueryParams
->;
-
-interface IAudioInfoQueryParams extends Query {
-	encodedURI: string;
-}
+import { IGetRequestHandler } from './types';
 
 const router = express.Router();
 
