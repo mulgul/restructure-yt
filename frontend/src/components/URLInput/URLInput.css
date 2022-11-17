@@ -1,0 +1,18 @@
+
+#URLForm:focus {
+    outline: none;
+}
+
+#URLForm::placeholder {
+    color:#728F93;
+}
+
+.BadLink {
+    border: solid 1px;
+    border-color: red;
+}
+
+.GoodLink {
+    border-color: green;
+
+}
