@@ -1,0 +1,4 @@
+./dist
+./webpack.config.json
+./node_modules
+./yarn
