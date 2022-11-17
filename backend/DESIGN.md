@@ -24,3 +24,11 @@ Notes:
 ```
 
 ```
+
+## USEFUL LINKS
+
+**Audio Formats**
+https://gist.github.com/AgentOak/34d47c65b1d28829bb17c24c04a0096f
+
+**
+https://forums.bunsenlabs.org/viewtopic.php?id=7637
