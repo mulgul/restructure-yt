@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './components/App'
+import { App } from './components/App';
+// import './reset.css';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import configureStore from './store/store.js';
 
 // const App = () => {
 //     return(
@@ -10,5 +14,25 @@ import { App } from './components/App'
 //         </div>
 //     )
 // }
+let store = configureStore({});
 
-ReactDOM.render(<App num={12345} />, document.getElementById("root"));
+function Root() {
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <App num={12345} />
+            </BrowserRouter>
+        </Provider>
+    )
+}
+
+// ReactDOM.render(
+//     <App num={12345} />, 
+//     document.getElementById("root")
+// );
+ReactDOM.render(
+    <React.StrictMode>
+        <Root />
+    </React.StrictMode>,
+    document.getElementById('root')
+);
