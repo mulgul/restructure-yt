@@ -33,6 +33,15 @@ Notes:
 
 ```
 
+## Process Handling
+
+### `launchProcess`
+
+#### TODO
+- [X] Promisify Exec, and get it working
+- [] Handle errors with Status Codes
+- [] Should there be error handling cmd attached to call?
+
 ## USEFUL LINKS
 
 **Audio Formats**
