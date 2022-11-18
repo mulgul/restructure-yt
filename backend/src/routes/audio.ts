@@ -1,16 +1,61 @@
 import express from 'express';
+import path from 'path';
 
 import { fetchAudioInfo } from '../services/audio/audioInfo';
-import { IGetRequestHandler } from './types';
+import { fetchAudioDownload } from '../services/audio/audioDownload'
+import { IParsedMetadata } from '../services/audio/types';
+import { createFileName } from '../utils/createFileName';
+import {
+	IAudioDownloadQueryParams,
+	IAudioInfoQueryParams,
+	IGetRequestHandler,
+} from './types';
 
 const router = express.Router();
 
-router.get('/metadata', async function (req: IGetRequestHandler, res) {
-	const { query } = req;
-	const decodedURI = decodeURIComponent(query.encodedURI);
-	const parsedMetadata = await fetchAudioInfo(decodedURI);
+router.get(
+	'/metadata',
+	async function (req: IGetRequestHandler<IAudioInfoQueryParams>, res) {
+		const { query } = req;
+		const decodedURI = decodeURIComponent(query.encodedURI);
+		let parsedMetadata: IParsedMetadata;
+		try {
+			parsedMetadata = await fetchAudioInfo(decodedURI);
+		} catch (err) {
+			return res
+				.status(400)
+				.json({ message: 'Invalid url. Not able to grab video metadata.' });
+		}
 
-	res.send(parsedMetadata);
-});
+		res.send(parsedMetadata);
+	}
+);
+
+router.get(
+	'/download',
+	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res) {
+		// TODO: addMetadata option
+		const { encodedURI, title, formatId, ext } = req.query;
+		const decodedURI = decodeURIComponent(encodedURI);
+		const fileName = createFileName(title);
+		const options = {
+			root: path.join(__dirname, '../downloads'),
+		};
+
+		const filePath = await fetchAudioDownload(
+			formatId,
+			options.root + `/${fileName}.${ext}`,
+			decodedURI
+		);
+
+		// res.set('content-type', 'audio/mp3');
+
+		// res.sendFile(`${fileName}.${ext}`, options, (err) => {
+		// 	if (err) {
+		// 		res.status(500).json({ message: 'Unexpected server error.' });
+		// 	}
+		// });
+	}
+);
 
 export default router;
