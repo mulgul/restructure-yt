@@ -5,14 +5,18 @@ export const fetchAudioDownload = async (
 	writePath: string,
 	decodedURI: string
 ) => {
-    const proc = await launchSpawnProcess(
-        'youtube-dl',
-        ['-i', '-f',  formatId, '-o', writePath, decodedURI]
-    );
+	const proc = await launchSpawnProcess('youtube-dl', [
+		'-i',
+		'-f',
+		formatId,
+		'-o',
+		writePath,
+		decodedURI,
+	]);
 
-    if (proc === 1) {
-        throw Error('Unexpected error downloading file.');
-    }
+	if (proc === 1) {
+		throw Error('Unexpected error downloading file.');
+	}
 
-    return writePath;
+	return writePath;
 };

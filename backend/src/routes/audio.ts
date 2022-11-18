@@ -1,8 +1,9 @@
 import express from 'express';
 import path from 'path';
 
+import { checkQueryParams } from '../middlewares';
+import { fetchAudioDownload } from '../services/audio/audioDownload';
 import { fetchAudioInfo } from '../services/audio/audioInfo';
-import { fetchAudioDownload } from '../services/audio/audioDownload'
 import { IParsedMetadata } from '../services/audio/types';
 import { createFileName } from '../utils/createFileName';
 import {
@@ -15,6 +16,7 @@ const router = express.Router();
 
 router.get(
 	'/metadata',
+	checkQueryParams('encodedURI'),
 	async function (req: IGetRequestHandler<IAudioInfoQueryParams>, res) {
 		const { query } = req;
 		const decodedURI = decodeURIComponent(query.encodedURI);
@@ -26,13 +28,14 @@ router.get(
 				.status(400)
 				.json({ message: 'Invalid url. Not able to grab video metadata.' });
 		}
-
+		res.set('content-type', 'application/json')
 		res.send(parsedMetadata);
 	}
 );
 
 router.get(
 	'/download',
+	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
 	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res) {
 		// TODO: addMetadata option
 		const { encodedURI, title, formatId, ext } = req.query;
