@@ -13,13 +13,14 @@ const handleEvent = () => {
 
 const App = () => {
     return(
-        <div>
-            <Header />
-            <URLInput />
-            VideoData
-            Formats
-            Footer - Donate
-
+        <div className="App-parent">
+            <div className="App-container">
+                <Header />
+                <URLInput />
+                VideoData
+                Formats
+                Footer - Donate
+            </div>
         </div>
     )
 }
