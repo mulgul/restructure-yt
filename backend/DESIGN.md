@@ -7,7 +7,7 @@
 {
     title: string,
     channel: string,
-    formats: string[],
+    formats: IFormat[],
     duration: number,
     upload_date: string,
     views: number,
@@ -15,15 +15,36 @@
 }
 ```
 
+#### TODO
+- [X] Get endpoint working
+- [X] Format the audio formatting correctly
+- [] Tests
+- [] Benchmarks
+- [] Error Handling
+- [] Documentation (Includes examples)
+
 Notes:
 - Use `--write-info-json` with `--skip-download` together to get all the metadata, or use `--dump-json` in order to get the metadata without writing to disk. 
 
-### `/audio?encodedURI`
+### `/audio/download?encodedURI={string}&format={string}&metadata={boolean}`
 
 **Response:**
 ```
 
 ```
+
+## Process Handling
+
+### `launchExecProcess`
+
+#### TODO
+- [X] Promisify Exec, and get it working
+- [ ] Handle errors with Status Codes
+- [ ] Should there be error handling cmd attached to call?
+
+### `launchSpawnProcess`
+- [ ] Test and run the code (See if it downloads correctly)
+- [ ] run it against `/audio/download`
 
 ## USEFUL LINKS
 
