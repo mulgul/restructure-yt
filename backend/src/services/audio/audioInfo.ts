@@ -1,4 +1,4 @@
-import { launchExecProcess } from '../utils/launchProcess';
+import { launchExecProcess } from '../../utils/launchProcess';
 import {
 	IAvailableFormats,
 	IFormat,
