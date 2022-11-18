@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header/index"
+import URLInput from "./components/URLInput/index"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// type AppProps = { num: number };
+
+// interface AppProps {
+//     num: number;
+// }
+const handleEvent = () => {
+    console.log("it works")
+}
+
+const App = () => {
+    return(
+        <div>
+            <Header />
+            <URLInput />
+            VideoData
+            Formats
+            Footer - Donate
+
+        </div>
+    )
 }
 
 export default App;
