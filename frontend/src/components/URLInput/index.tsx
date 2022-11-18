@@ -8,14 +8,20 @@ const URLInput = () => {
     //     e.preventDefault()
     // }
     
-    const [url, setUrl]: [string, Function] = useState();
+    const [url, setUrl]: [string, Function] = useState('');
 
-    
+
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         console.log("Hi")
         console.log(event.target.value);
     };
+
+    const update = (field: string) => {
+        if(field){
+            console.log("hi")
+        }
+    }
     // const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     console.log(e.target.value)
     //     console.log(e.target.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/))
@@ -33,10 +39,9 @@ const URLInput = () => {
 
     return(
         <div>
-            <form >
+            <form onChange={()=> update("hi")}>
                 {/* <input id='URLForm' type="url" value={url} placeholder="Enter a URL" onChange={(e : React.ChangeEvent<HTMLInputElement>) => handleChange(e)}/> */}
-                <input id='URLForm' value={url} type="text" placeholder="Enter a URL to convert" onChange={handleChange}/>
-
+                <input value={url} onKeyDown={()=>update("hi")}/>
             </form>
         </div>
     )
