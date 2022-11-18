@@ -12,7 +12,7 @@ const URLInput = () => {
     }
 
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         console.log(e.target.value)
         // console.log(e.target.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/))
         setUrl(e.target.value)
@@ -20,10 +20,11 @@ const URLInput = () => {
         if (e.target.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)){
             URLFormInput?.classList.remove('BadLink')
             URLFormInput?.classList.add('GoodLink')
-            request(`/audio/metadata?encodeURI=${encodeURIComponent(e.target.value)}`, {
+            const data = await request(`/audio/metadata?encodedURI=${encodeURIComponent(e.target.value)}`, {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             })
+            console.log(data, "data")
         } else {
             URLFormInput?.classList.remove('GoodLink')
             URLFormInput?.classList.add('BadLink')

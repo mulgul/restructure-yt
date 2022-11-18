@@ -7,6 +7,6 @@ export function request<T>(path: string, options = {}) : Promise<T> {
         return res.json()
     })
     .then(data => {
-        return data.data
+        return data
     })
 }
