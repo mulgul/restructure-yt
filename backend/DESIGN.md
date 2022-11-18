@@ -46,6 +46,10 @@ Notes:
 - [ ] Test and run the code (See if it downloads correctly)
 - [ ] run it against `/audio/download`
 
+## Middleware
+
+- [ ] dynamically take in a set of query params to check instead of just one. 
+
 ## USEFUL LINKS
 
 **Audio Formats**
