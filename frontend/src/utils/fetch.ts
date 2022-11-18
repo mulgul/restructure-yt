@@ -1,5 +1,3 @@
-
-
 export function request<T>(path: string, options = {}) : Promise<T> {
     return fetch(path, options)
     .then(res => {

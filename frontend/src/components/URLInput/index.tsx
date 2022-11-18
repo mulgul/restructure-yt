@@ -7,7 +7,7 @@ const URLInput = () => {
     
     const [url, setUrl]: [string, Function] = useState('');
     
-    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
     }
 
@@ -20,8 +20,12 @@ const URLInput = () => {
         if (e.target.value.match(/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/)){
             URLFormInput?.classList.remove('BadLink')
             URLFormInput?.classList.add('GoodLink')
-            request(`/audio/metadata?encodeURI=${encodeURIComponent(e.target.value)}`)
+            request(`/audio/metadata?encodeURI=${encodeURIComponent(e.target.value)}`, {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            })
         } else {
+            URLFormInput?.classList.remove('GoodLink')
             URLFormInput?.classList.add('BadLink')
         }
     }

@@ -19,7 +19,7 @@ const App = () => {
             VideoData
             Formats
             Footer - Donate
-            
+
         </div>
     )
 }
