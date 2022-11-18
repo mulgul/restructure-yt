@@ -9,7 +9,7 @@ export const launchExecProcess = async (cmd: string) => {
 	if (stderr) {
 		console.error(`error: ${stderr}`);
 	}
-	
+
 	return stdout;
 };
 
@@ -18,10 +18,7 @@ enum StatusCode {
 	Failure = 1,
 }
 
-export const launchSpawnProcess = async (
-	cmd: string,
-	args: string[],
-) => {
+export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 	return new Promise<StatusCode>((resolve, reject) => {
 		const proc = spawn(cmd, args, { detached: true });
 

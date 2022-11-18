@@ -1,6 +1,5 @@
 import express from 'express';
 
-import { checkEncodedURI } from './middlewares';
 import audioRouter from './routes/audio';
 
 const app = express();
@@ -14,7 +13,7 @@ app.use(
 );
 
 // Routes
-app.use('/audio', checkEncodedURI, audioRouter);
+app.use('/audio', audioRouter);
 
 // define a route handler for the default home page
 app.get('/', (_, res) => {

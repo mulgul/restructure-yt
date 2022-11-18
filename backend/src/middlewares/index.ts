@@ -1,1 +1,1 @@
-export { checkEncodedURI } from './checkEncodedURI';
+export { checkQueryParams } from './checkQueryParams';
