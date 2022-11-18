@@ -35,12 +35,16 @@ Notes:
 
 ## Process Handling
 
-### `launchProcess`
+### `launchExecProcess`
 
 #### TODO
 - [X] Promisify Exec, and get it working
-- [] Handle errors with Status Codes
-- [] Should there be error handling cmd attached to call?
+- [ ] Handle errors with Status Codes
+- [ ] Should there be error handling cmd attached to call?
+
+### `launchSpawnProcess`
+- [ ] Test and run the code (See if it downloads correctly)
+- [ ] run it against `/audio/download`
 
 ## USEFUL LINKS
 

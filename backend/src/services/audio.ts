@@ -1,4 +1,4 @@
-import { launchProcess } from '../utils/launchProcess';
+import { launchExecProcess } from '../utils/launchProcess';
 import {
 	IAvailableFormats,
 	IFormat,
@@ -15,7 +15,7 @@ export const fetchAudioInfo = async (
 	decodedURI: string
 ): Promise<IParsedMetadata> => {
 	const cmd = `youtube-dl --dump-json ${decodedURI}`;
-	const jsonDump = await launchProcess(cmd);
+	const jsonDump = await launchExecProcess(cmd);
 	const json: IMetadata = JSON.parse(jsonDump);
 
 	const availableFormats = await fetchAudioFormats(decodedURI);
@@ -35,7 +35,7 @@ export const fetchAudioFormats = async (
 	decodedURI: string
 ): Promise<IAvailableFormats> => {
 	const cmd = `youtube-dl -F ${decodedURI} | grep audio`;
-	const fetchedAudioList = await launchProcess(cmd);
+	const fetchedAudioList = await launchExecProcess(cmd);
 	const audioList = fetchedAudioList
 		.split(/\r?\n/)
 		.map((str) => str.replace(/\s+/g, ' ').trim())
