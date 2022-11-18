@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { fetchAudioInfo } from '../services/audio';
+import { fetchAudioInfo } from '../services/audioInfo';
 import { IGetRequestHandler } from './types';
 
 const router = express.Router();
