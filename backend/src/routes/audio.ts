@@ -28,7 +28,7 @@ router.get(
 				.status(400)
 				.json({ message: 'Invalid url. Not able to grab video metadata.' });
 		}
-
+		res.set('content-type', 'application/json')
 		res.send(parsedMetadata);
 	}
 );
