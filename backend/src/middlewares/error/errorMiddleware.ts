@@ -21,7 +21,7 @@ export const errorMiddleware: ErrorRequestHandler = (
 	}
 
 	const info = {
-		code: 500,
+		code: res.statusCode || 500,
 		message: err.message ?? 'Internal Error',
 		stack: err.stack,
 	};
