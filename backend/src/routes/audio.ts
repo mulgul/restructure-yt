@@ -24,9 +24,7 @@ router.get(
 		try {
 			parsedMetadata = await fetchAudioInfo(decodedURI);
 		} catch (err) {
-			return res
-				.status(400)
-				.json({ message: 'Invalid url. Not able to grab video metadata.' });
+			return res.status(400).json({ message: err });
 		}
 		res.set('content-type', 'application/json');
 		res.send(parsedMetadata);
@@ -45,11 +43,16 @@ router.get(
 			root: path.join(__dirname, '../downloads'),
 		};
 
-		const filePath = await fetchAudioDownload(
-			formatId,
-			options.root + `/${fileName}.${ext}`,
-			decodedURI
-		);
+		let filePath: string;
+		try {
+			filePath = await fetchAudioDownload(
+				formatId,
+				options.root + `/${fileName}.${ext}`,
+				decodedURI
+			);
+		} catch (err) {
+			return res.status(400).json({ message: err });
+		}
 
 		// res.set('content-type', 'audio/mp3');
 

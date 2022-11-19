@@ -18,7 +18,13 @@ export const fetchAudioInfo = async (
 	const jsonDump = await launchExecProcess(cmd);
 	const json: IMetadata = JSON.parse(jsonDump);
 
-	const availableFormats = await fetchAudioFormats(decodedURI);
+	let availableFormats: IAvailableFormats;
+	try {
+		availableFormats = await fetchAudioFormats(decodedURI);
+	} catch (err) {
+		throw Error('Invalid url. Not able to grab video metadata.');
+	}
+
 	const formats = parseFormats(availableFormats, json.formats);
 
 	return {
