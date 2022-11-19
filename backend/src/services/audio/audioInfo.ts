@@ -20,7 +20,7 @@ export const fetchAudioInfo = async (
 	try {
 		jsonDump = await launchExecProcess(cmd);
 	} catch (err) {
-		throw Error(err as string);
+		throw err as string;
 	}
 
 	const json: IMetadata = JSON.parse(jsonDump);
@@ -29,7 +29,7 @@ export const fetchAudioInfo = async (
 	try {
 		availableFormats = await fetchAudioFormats(decodedURI);
 	} catch (err) {
-		throw Error('Invalid url. Not able to grab video metadata.');
+		throw 'Invalid url. Not able to grab video metadata.';
 	}
 
 	const formats = parseFormats(availableFormats, json.formats);
@@ -53,7 +53,7 @@ export const fetchAudioFormats = async (
 	try {
 		fetchedAudioList = await launchExecProcess(cmd);
 	} catch (err) {
-		throw Error(err as string);
+		throw err as string;
 	}
 
 	const audioList = fetchedAudioList

@@ -1,4 +1,4 @@
-import { exec, spawn } from 'child_process';
+import { exec, ExecException, spawn } from 'child_process';
 import util from 'util';
 
 const pExec = util.promisify(exec);
@@ -13,7 +13,7 @@ export const launchExecProcess = async (cmd: string) => {
 		const output = await pExec(cmd);
 		stdout = output.stdout;
 	} catch (err) {
-		throw Error(`error: ${err}`);
+		throw err as ExecException;
 	}
 
 	return stdout;

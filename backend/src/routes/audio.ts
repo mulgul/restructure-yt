@@ -17,17 +17,18 @@ const router = express.Router();
 router.get(
 	'/metadata',
 	checkQueryParams('encodedURI'),
-	async function (req: IGetRequestHandler<IAudioInfoQueryParams>, res) {
+	async function (req: IGetRequestHandler<IAudioInfoQueryParams>, res, next) {
 		const { query } = req;
 		const decodedURI = decodeURIComponent(query.encodedURI);
 		let parsedMetadata: IParsedMetadata;
 		try {
 			parsedMetadata = await fetchAudioInfo(decodedURI);
+			res.set('content-type', 'application/json');
+			res.send(parsedMetadata);
 		} catch (err) {
-			return res.status(400).json({ message: err });
+			res.status(400);
+			next(err);
 		}
-		res.set('content-type', 'application/json');
-		res.send(parsedMetadata);
 	}
 );
 
