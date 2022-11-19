@@ -8,3 +8,6 @@
 
 # TSC output
 /build
+
+# Logs
+/logs
