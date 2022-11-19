@@ -18,8 +18,13 @@ enum StatusCode {
 	Failure = 1,
 }
 
+interface StatusResponse {
+	code: StatusCode;
+	err?: string;
+}
+
 export const launchSpawnProcess = async (cmd: string, args: string[]) => {
-	return new Promise<StatusCode>((resolve, reject) => {
+	return new Promise<StatusResponse>((resolve, reject) => {
 		const proc = spawn(cmd, args, { detached: true });
 
 		proc.stdout.on('data', (data) => {
@@ -28,12 +33,12 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 
 		proc.stderr.on('data', (data) => {
 			console.error(`stderr: ${data}`);
-			reject(StatusCode.Failure);
+			reject({ code: StatusCode.Failure, err: `stderr: ${data}` });
 		});
 
 		proc.on('close', (code) => {
 			console.log(`child process exited with code ${code}`);
-			resolve(StatusCode.Success);
+			resolve({ code: StatusCode.Success });
 		});
 	});
 };
