@@ -18,15 +18,6 @@ describe('errorMiddleware', () => {
 		jest.spyOn(console, 'log').mockImplementation(() => ({}));
 	});
 
-	errorMiddlewareCallsNextWithErr('ILegacyError', {
-		error: 'legacy error',
-		statusCode: 500,
-	});
-
-	errorMiddlewareCallsNextWithErr('IBasicError', {
-		error: 'basic error',
-	});
-
 	errorMiddlewareCallsNextWithErr('nonsense object', {
 		veryImportantMessage: 'NOT',
 	});
