@@ -15,7 +15,14 @@ export const fetchAudioInfo = async (
 	decodedURI: string
 ): Promise<IParsedMetadata> => {
 	const cmd = `youtube-dl --dump-json ${decodedURI}`;
-	const jsonDump = await launchExecProcess(cmd);
+
+	let jsonDump: string;
+	try {
+		jsonDump = await launchExecProcess(cmd);
+	} catch (err) {
+		throw Error(err as string);
+	}
+
 	const json: IMetadata = JSON.parse(jsonDump);
 
 	let availableFormats: IAvailableFormats;
@@ -41,7 +48,14 @@ export const fetchAudioFormats = async (
 	decodedURI: string
 ): Promise<IAvailableFormats> => {
 	const cmd = `youtube-dl -F ${decodedURI} | grep audio`;
-	const fetchedAudioList = await launchExecProcess(cmd);
+
+	let fetchedAudioList: string;
+	try {
+		fetchedAudioList = await launchExecProcess(cmd);
+	} catch (err) {
+		throw Error(err as string);
+	}
+
 	const audioList = fetchedAudioList
 		.split(/\r?\n/)
 		.map((str) => str.replace(/\s+/g, ' ').trim())
