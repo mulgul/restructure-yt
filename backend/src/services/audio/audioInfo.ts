@@ -1,7 +1,6 @@
 import { BadRequest } from 'http-errors';
 
 import { launchExecProcess } from '../../utils/launchProcess';
-import { IExecException } from '../../utils/types';
 import {
 	IAvailableFormats,
 	IFormat,
@@ -25,7 +24,7 @@ export const fetchAudioInfo = async (
 	} catch (err) {
 		// This is the first call we are making with the given decodedURI
 		// If there is an error it will most likely be from a bad request.
-		throw new BadRequest((err as IExecException).stderr);
+		throw new BadRequest(err as string);
 	}
 
 	const json: IMetadata = JSON.parse(jsonDump);

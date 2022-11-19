@@ -1,24 +1,14 @@
 import { exec, spawn } from 'child_process';
-import util from 'util';
 
-import { IExecException } from './types';
-
-const pExec = util.promisify(exec);
-
-export const launchExecProcess = async (cmd: string) => {
-	/**
-	 * Instead of handling stderr returned by exec here, we are returning the catched err from
-	 * the promise.
-	 */
-	let stdout: string;
-	try {
-		const output = await pExec(cmd);
-		stdout = output.stdout;
-	} catch (err) {
-		throw err as IExecException;
-	}
-
-	return stdout;
+export const launchExecProcess = async (cmd: string): Promise<string> => {
+	return new Promise((resolve, reject) => {
+		exec(cmd, (error, stdout, stderr) => {
+			if (error) {
+				reject(stderr);
+			}
+			resolve(stdout);
+		});
+	});
 };
 
 enum StatusCode {
