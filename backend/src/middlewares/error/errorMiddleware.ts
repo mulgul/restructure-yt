@@ -28,5 +28,5 @@ export const errorMiddleware: ErrorRequestHandler = (
 
 	Log.logger.error(info);
 
-	res.status(500).send(info);
+	res.status(info.code).send(info);
 };

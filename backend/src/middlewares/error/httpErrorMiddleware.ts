@@ -31,7 +31,7 @@ export const httpErrorMiddleware: ErrorRequestHandler = (
 		stack: err.stack,
 	};
 
-	Log.logger.error(info);
+	Log.logger.warn(info);
 
 	res.status(code).send(info);
 };

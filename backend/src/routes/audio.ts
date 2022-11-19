@@ -26,7 +26,6 @@ router.get(
 			res.set('content-type', 'application/json');
 			res.send(parsedMetadata);
 		} catch (err) {
-			res.status(400);
 			next(err);
 		}
 	}
