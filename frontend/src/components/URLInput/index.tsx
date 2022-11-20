@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import './URLInput.css'
 import { request } from '../../utils/fetch'
 import { IParsedMetadata } from '../../types/responses'
+import VideoData from '../VideoData'
+import Formats from '../Formats'
 
 const URLInput = () => {
     
     const [url, setUrl]: [string, Function] = useState('');
     const [metadata, setMetadata] : [IParsedMetadata | {}, Function] = useState({})
-    
+
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
     }
@@ -24,6 +26,7 @@ const URLInput = () => {
                 "Accept": "application/json"
             })
             setMetadata(data)
+            console.log(data)
         } else {
             URLFormInput?.classList.remove('GoodLink')
             URLFormInput?.classList.add('BadLink')
@@ -37,12 +40,11 @@ const URLInput = () => {
                     <input id='URLForm' type="url" value={url} placeholder="Enter a URL to Convert" onChange={(e : React.ChangeEvent<HTMLInputElement>) => handleChange(e)}/>
                 </form>
             </div>
-            <div className='VideoData-Container'>
-                {/* <VideoData data={metadata} /> */}
-                VideoData
+            <div className='VideoData-parent'>
+                <VideoData metadata={metadata} />
             </div>
-            <div className='Formats-container'>
-                Formats
+            <div className='Formats-parent'>
+                <Formats metadata={metadata} />
             </div>
         </div>
     )

@@ -34,3 +34,7 @@ interface IFragments {
 	path: string;
 	duration: number;
 }
+
+export type MetadataProps = {
+    metadata: IParsedMetadata | {};
+}
