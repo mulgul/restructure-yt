@@ -15,7 +15,7 @@ const VideoData = ({metadata}: MetadataProps) => {
             </div>
             <div className='Video-info'>
                 {/* <p className="Video-title">{metadata.title}</p> */}
-                <p className="Video-title">Title</p>
+                <h2 className="Video-title">Title</h2>
                 <p>Channel</p>
                 <div className='Video-views-likes'>
                     <p>53 views</p>

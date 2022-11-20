@@ -1,0 +1,40 @@
+.Formats-parent {
+    height: 20vh;
+    width: 40vw;
+}
+
+.Formats-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(95, 187, 131); */
+    /* background-color: #FFF7E9; */
+    border-radius: 15px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+}
+
+.Formats-container h2 {
+    margin: 20px;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.Formats-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60%;
+}
+
+.btn {
+    width: 20%;
+    height: 30%;
+    border: none;
+    /* border: 2px solid #5F9DF7; */
+    border-radius: 5px;
+    color: #f9f8f8;
+    font-size: 16px;
+    background-color:  #5F9DF7;
+}
