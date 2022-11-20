@@ -1,6 +1,8 @@
 import React from "react";
-import Header from "./components/Header/index"
-import URLInput from "./components/URLInput/index"
+import Header from "./components/Header/index";
+import URLInput from "./components/URLInput/index";
+import './App.css'
+
 
 // type AppProps = { num: number };
 
@@ -17,9 +19,10 @@ const App = () => {
             <div className="App-container">
                 <Header />
                 <URLInput />
-                VideoData
-                Formats
-                Footer - Donate
+                {/* <div className="Footer-container">
+
+                    Footer - Donate
+                </div> */}
             </div>
         </div>
     )

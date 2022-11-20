@@ -1,3 +1,18 @@
+.right-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.URLInput-container {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 #URLForm:focus {
     outline: none;
@@ -5,6 +20,14 @@
 
 #URLForm::placeholder {
     color:#728F93;
+}
+
+#URLForm {
+    width: 30vw;
+    height: 3vh;
+    border: none;
+    border-radius: 7px;
+    padding-left: 10px;
 }
 
 .BadLink {

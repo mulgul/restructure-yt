@@ -31,11 +31,19 @@ const URLInput = () => {
     }
 
     return(
-        <div>
-            <form onSubmit={(e : React.ChangeEvent<HTMLFormElement>) => handleSubmit(e)}>
-                <input id='URLForm' type="url" value={url} placeholder="Enter a URL to Convert" onChange={(e : React.ChangeEvent<HTMLInputElement>) => handleChange(e)}/>
-            </form>
-            <VideoData data={metadata} />
+        <div className='right-container'>
+            <div className='URLInput-container'>
+                <form onSubmit={(e : React.ChangeEvent<HTMLFormElement>) => handleSubmit(e)}>
+                    <input id='URLForm' type="url" value={url} placeholder="Enter a URL to Convert" onChange={(e : React.ChangeEvent<HTMLInputElement>) => handleChange(e)}/>
+                </form>
+            </div>
+            <div className='VideoData-Container'>
+                {/* <VideoData data={metadata} /> */}
+                VideoData
+            </div>
+            <div className='Formats-container'>
+                Formats
+            </div>
         </div>
     )
 }

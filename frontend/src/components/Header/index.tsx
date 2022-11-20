@@ -8,7 +8,7 @@ const Header = () => {
         <div className='header-container'>
             <div className="title-container">
                 <img src="convert-logo.png" alt="" />
-                <h1>Youtube to Audio File</h1>
+                <h1>Morphio</h1>
             </div>
         </div>
 
