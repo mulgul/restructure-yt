@@ -16,4 +16,23 @@ describe('launchProcess', () => {
 			}
 		});
 	});
+
+	describe('launchSpawnProcess', () => {
+		it('Should return the correct success code with a given command and args', async () => {
+			const result = await launchSpawnProcess('echo', ['Test']);
+
+			expect(result).toStrictEqual({ code: 0 });
+		});
+
+		it('Should return the correct error code with a given command and args', async () => {
+			try {
+				await launchSpawnProcess('pwd', ['--hello']);
+			} catch (e) {
+				expect(e).toStrictEqual({
+					code: 1,
+					err: 'stderr: pwd: illegal option -- -\nusage: pwd [-L | -P]\n',
+				});
+			}
+		});
+	});
 });

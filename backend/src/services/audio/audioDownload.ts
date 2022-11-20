@@ -12,22 +12,19 @@ import { launchSpawnProcess } from '../../utils/launchProcess';
 export const fetchAudioDownload = async (
 	formatId: string,
 	writePath: string,
-	decodedURI: string,
-	addMetadata: boolean
+	decodedURI: string
 ) => {
-	const addMetadataArg = addMetadata ? '--add-metadata' : '';
 	const proc = await launchSpawnProcess('youtube-dl', [
 		'-i',
 		'-f',
 		formatId,
 		'-o',
 		writePath,
-		addMetadataArg,
 		decodedURI,
 	]);
 
 	if (proc.code === 1) {
-		throw Error(`Unexpected error downloading file: ${proc.err}`);
+		throw Error(`Unexpected error downloading file: ${proc.stderr}`);
 	}
 
 	return writePath;

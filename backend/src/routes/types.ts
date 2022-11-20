@@ -15,6 +15,5 @@ export interface IAudioInfoQueryParams extends Query {
 export interface IAudioDownloadQueryParams extends IAudioInfoQueryParams {
 	formatId: string;
 	title: string;
-	addMetadata?: string;
 	ext: string;
 }

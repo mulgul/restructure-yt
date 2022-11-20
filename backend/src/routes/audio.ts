@@ -35,8 +35,7 @@ router.get(
 	'/download',
 	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
 	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res) {
-		const { encodedURI, title, formatId, ext, addMetadata } = req.query;
-		const addMetadataArg = addMetadata === 'true';
+		const { encodedURI, title, formatId, ext } = req.query;
 		const decodedURI = decodeURIComponent(encodedURI);
 		const fileName = createFileName(title);
 		const options = {
@@ -48,8 +47,7 @@ router.get(
 			filePath = await fetchAudioDownload(
 				formatId,
 				options.root + `/${fileName}.${ext}`,
-				decodedURI,
-				addMetadataArg
+				decodedURI
 			);
 		} catch (err) {
 			return res.status(400).json({ message: err });
