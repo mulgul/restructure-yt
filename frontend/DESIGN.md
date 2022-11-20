@@ -7,6 +7,7 @@ Build solid design
         - #DCDBD8, #D1A58A, #5C97B8, #183A53
     - #CCE0D2, #61C2A2, #2C8395, #1D617A 
         -#16796F, #7CB7AF, #CADEDF, #9CA89E
+        -#FF731D, #FFF7E9, #5F9DF7, #1746A2
 
 
 

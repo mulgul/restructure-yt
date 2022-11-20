@@ -28,6 +28,7 @@
     border: none;
     border-radius: 7px;
     padding-left: 10px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
 }
 
 .BadLink {

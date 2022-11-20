@@ -50,7 +50,7 @@
   margin-top: 5vh;
   margin-bottom: 5vh;
   border-radius: 30px;
-  /* background-color: #e8efe3; */
-  background-color: #CCE0D2;
+  background-color:  #f9f8f8;
+  border: solid 2px #5F9DF7;
   display: flex;
 }
