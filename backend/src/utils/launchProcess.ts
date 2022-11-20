@@ -47,7 +47,7 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 			} else if (code === 0) {
 				resolve({
 					code: StatusCode.Success,
-					stdout: `stdoput: ${stdout.join()}`,
+					stdout: `stdout: ${stdout.join()}`,
 				});
 			}
 		});
