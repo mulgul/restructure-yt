@@ -50,6 +50,13 @@ export const fetchAudioInfo = async (
 	};
 };
 
+/**
+ * Fetch audio formats for a given decodedURI. This will parse all formats to make sure
+ * we only use audio compatible downloads.
+ *
+ * @param decodedURI The decodedURI to query with youtube-dl
+ * @param childProcessCall This will call a child process to run the given command.
+ */
 export const fetchAudioFormats = async (
 	decodedURI: string,
 	childProcessCall: (cmd: string) => Promise<string>
@@ -83,9 +90,6 @@ export const fetchAudioFormats = async (
 	return audioList;
 };
 
-export const parseFormats = (
-	availFormats: IAvailableFormats,
-	formats: IFormat[]
-) => {
+const parseFormats = (availFormats: IAvailableFormats, formats: IFormat[]) => {
 	return formats.filter((form) => availFormats.includes(form.format_id));
 };

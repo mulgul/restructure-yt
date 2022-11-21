@@ -1,5 +1,10 @@
 import { exec, spawn } from 'child_process';
 
+/**
+ * Run child process EXEC. This will always return a string, whether rejected or resolved.
+ *
+ * @param cmd Command to execute
+ */
 export const launchExecProcess = async (cmd: string): Promise<string> => {
 	return new Promise((resolve, reject) => {
 		exec(cmd, (error, stdout, stderr) => {
