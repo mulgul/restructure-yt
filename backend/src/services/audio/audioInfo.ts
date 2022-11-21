@@ -33,7 +33,8 @@ export const fetchAudioInfo = async (
 	try {
 		availableFormats = await fetchAudioFormats(decodedURI);
 	} catch (err) {
-		throw 'Invalid url. Not able to grab video metadata.';
+		// This will end up being returned as an InternalServer error 500.
+		throw Error(err as string);
 	}
 
 	const formats = parseFormats(availableFormats, json.formats);
