@@ -7,6 +7,7 @@ export type IAvailableFormats = string[];
 
 export interface IParsedMetadata {
 	title: string;
+	channel: string;
 	duration: number;
 	uploadDate: string;
 	views: number;

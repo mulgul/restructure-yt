@@ -40,6 +40,7 @@ export const fetchAudioInfo = async (
 
 	return {
 		title: json.title,
+		channel: json.channel,
 		duration: json.duration,
 		uploadDate: json.upload_date,
 		views: json.view_count,
