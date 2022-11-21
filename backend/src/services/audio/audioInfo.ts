@@ -1,6 +1,5 @@
 import { BadRequest } from 'http-errors';
 
-import { launchExecProcess } from '../../utils/launchProcess';
 import {
 	IAvailableFormats,
 	IFormat,
@@ -14,13 +13,14 @@ import {
  * @param decodedURI
  */
 export const fetchAudioInfo = async (
-	decodedURI: string
+	decodedURI: string,
+	childProcessCall: (cmd: string) => Promise<string>
 ): Promise<IParsedMetadata> => {
 	const cmd = `youtube-dl --dump-json ${decodedURI}`;
 
 	let jsonDump: string;
 	try {
-		jsonDump = await launchExecProcess(cmd);
+		jsonDump = await childProcessCall(cmd);
 	} catch (err) {
 		// This is the first call we are making with the given decodedURI
 		// If there is an error it will most likely be from a bad request.
@@ -31,7 +31,7 @@ export const fetchAudioInfo = async (
 
 	let availableFormats: IAvailableFormats;
 	try {
-		availableFormats = await fetchAudioFormats(decodedURI);
+		availableFormats = await fetchAudioFormats(decodedURI, childProcessCall);
 	} catch (err) {
 		// This will end up being returned as an InternalServer error 500.
 		throw Error(err as string);
@@ -51,13 +51,14 @@ export const fetchAudioInfo = async (
 };
 
 export const fetchAudioFormats = async (
-	decodedURI: string
+	decodedURI: string,
+	childProcessCall: (cmd: string) => Promise<string>
 ): Promise<IAvailableFormats> => {
 	const cmd = `youtube-dl -F ${decodedURI} | grep audio`;
 
 	let fetchedAudioList: string;
 	try {
-		fetchedAudioList = await launchExecProcess(cmd);
+		fetchedAudioList = await childProcessCall(cmd);
 	} catch (err) {
 		throw err as string;
 	}

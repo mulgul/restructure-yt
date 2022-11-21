@@ -6,6 +6,7 @@ import { fetchAudioDownload } from '../services/audio/audioDownload';
 import { fetchAudioInfo } from '../services/audio/audioInfo';
 import { IParsedMetadata } from '../services/audio/types';
 import { createFileName } from '../utils/createFileName';
+import { launchExecProcess } from '../utils/launchProcess';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
@@ -22,7 +23,7 @@ router.get(
 		const decodedURI = decodeURIComponent(query.encodedURI);
 		let parsedMetadata: IParsedMetadata;
 		try {
-			parsedMetadata = await fetchAudioInfo(decodedURI);
+			parsedMetadata = await fetchAudioInfo(decodedURI, launchExecProcess);
 			res.set('content-type', 'application/json');
 			res.send(parsedMetadata);
 		} catch (err) {
