@@ -51,8 +51,8 @@
   margin-bottom: 5vh;
   border-radius: 30px;
   background-color:  #f9f8f8;
-  /* border: solid 2px #5F9DF7; */
-  border: solid 1px #FF731D;
-  border: 2px solid #FFF7E9;
+  border: solid 2px #5F9DF7;
+  /* border: solid 1px #FF731D;
+  border: 2px solid #FFF7E9; */
   display: flex;
 }
