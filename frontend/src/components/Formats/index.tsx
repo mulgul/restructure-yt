@@ -1,19 +1,25 @@
 import './Formats.css'
-import { MetadataProps } from '../../types/responses'
+import { IParsedMetadata, MetadataProps } from '../../types/responses'
+import FormatCard from '../FormatCard'
 
 const Formats = ({metadata}: MetadataProps) => {
 
+    (metadata as IParsedMetadata).formats.forEach(format => {
+
+    })
 
     return (
         <div className='Formats-container'>
             <h2>Formats</h2>
             <div className='Formats-buttons'>
-                <button className='btn'>opus</button>
+                { (metadata as IParsedMetadata).formats.map(format => (
+                    <FormatCard format={format} />
+                ))}
+                {/* <button className='btn'>opus</button>
                 <button className='btn'>mp4a</button>
-                <button className='btn'>others</button>
+                <button className='btn'>others</button> */}
 
             </div>
-
         </div>
     )
 }

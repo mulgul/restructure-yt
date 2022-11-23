@@ -15,6 +15,7 @@ export interface IFormat {
 	height: number | null;
 	tbr: number;
 	asr: number;
+	abr: number;
 	fps: number | null;
 	filesize: number;
 	language: string | null;
@@ -27,7 +28,9 @@ export interface IFormat {
 	fragments: IFragments[];
 	protocol: string;
 	format: string;
-	http_headers: string[];
+	http_headers: Record<string, string>;
+	downloader_options: {http_chunk_size: number};
+	quality: number
 }
 
 interface IFragments {
