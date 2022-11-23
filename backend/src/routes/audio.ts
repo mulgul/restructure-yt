@@ -35,7 +35,7 @@ router.get(
 router.get(
 	'/download',
 	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
-	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res) {
+	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res, next) {
 		const { encodedURI, title, formatId, ext } = req.query;
 		const decodedURI = decodeURIComponent(encodedURI);
 		const fileName = createFileName(title);
@@ -51,16 +51,21 @@ router.get(
 				decodedURI
 			);
 		} catch (err) {
-			return res.status(400).json({ message: err });
+			return next(err);
 		}
 
-		// res.set('content-type', 'audio/mp3');
+		// audio/webm (SHOULD THIS EXT be .weba)
+		// audio/ogg -> opus
+		// audio/mp4 -> m4a
 
-		// res.sendFile(`${fileName}.${ext}`, options, (err) => {
-		// 	if (err) {
-		// 		res.status(500).json({ message: 'Unexpected server error.' });
-		// 	}
-		// });
+		res.set('content-type', 'audio/mp3');
+
+		res.sendFile(`${fileName}.${ext}`, options, (err) => {
+			if (err) {
+				next(err);
+			}
+		});
+		res.download
 	}
 );
 

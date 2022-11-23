@@ -27,7 +27,7 @@ app.use(errorMiddleware);
 
 // define a route handler for the default home page
 app.get('/', (_, res) => {
-	res.json({ message: 'ok' });
+	res.sendFile(__dirname + '/static/downtime.html');
 });
 
 // start the Express server
