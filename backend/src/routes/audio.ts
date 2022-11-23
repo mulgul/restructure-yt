@@ -1,6 +1,8 @@
 import express from 'express';
+import fs from 'fs';
 import path from 'path';
 
+import { Log } from '../logging/Log';
 import { checkQueryParams } from '../middlewares';
 import { fetchAudioDownload } from '../services/audio/audioDownload';
 import { fetchAudioInfo } from '../services/audio/audioInfo';
@@ -14,6 +16,7 @@ import {
 } from './types';
 
 const router = express.Router();
+const { logger } = Log;
 
 router.get(
 	'/metadata',
@@ -35,7 +38,11 @@ router.get(
 router.get(
 	'/download',
 	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
-	async function (req: IGetRequestHandler<IAudioDownloadQueryParams>, res, next) {
+	async function (
+		req: IGetRequestHandler<IAudioDownloadQueryParams>,
+		res,
+		next
+	) {
 		const { encodedURI, title, formatId, ext } = req.query;
 		const decodedURI = decodeURIComponent(encodedURI);
 		const fileName = createFileName(title);
@@ -54,18 +61,18 @@ router.get(
 			return next(err);
 		}
 
-		// audio/webm (SHOULD THIS EXT be .weba)
-		// audio/ogg -> opus
-		// audio/mp4 -> m4a
-
-		res.set('content-type', 'audio/mp3');
-
 		res.sendFile(`${fileName}.${ext}`, options, (err) => {
 			if (err) {
 				next(err);
 			}
+
+			fs.unlink(filePath, (err) => {
+				if (err) {
+					logger.error(err);
+				}
+				console.log(`File Path: ${filePath} DELETED`);
+			});
 		});
-		res.download
 	}
 );
 
