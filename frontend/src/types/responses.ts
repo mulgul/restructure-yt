@@ -41,3 +41,7 @@ interface IFragments {
 export type MetadataProps = {
     metadata: IParsedMetadata | {};
 }
+
+export type FormatProps = {
+    format: IFormat | {}
+}
