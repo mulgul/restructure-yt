@@ -18,9 +18,9 @@
 #### TODO
 - [X] Get endpoint working
 - [X] Format the audio formatting correctly
-- [] Tests
+- [X] Tests
 - [] Benchmarks
-- [] Error Handling
+- [X] Error Handling
 - [] Documentation (Includes examples)
 
 Notes:
@@ -28,9 +28,17 @@ Notes:
 
 ### `/audio/download?encodedURI={string}&format={string}&metadata={boolean}`
 
-**Response:**
+**Headers:**
+```
+Headers:
+{
+    Content-type: audio/*
+}
 ```
 
+**Response:**
+```
+Audio File.
 ```
 
 ## Process Handling
@@ -39,16 +47,16 @@ Notes:
 
 #### TODO
 - [X] Promisify Exec, and get it working
-- [ ] Handle errors with Status Codes
+- [X] Handle errors with Status Codes
 - [ ] Should there be error handling cmd attached to call?
 
 ### `launchSpawnProcess`
-- [ ] Test and run the code (See if it downloads correctly)
-- [ ] run it against `/audio/download`
+- [X] Test and run the code (See if it downloads correctly)
+- [X] run it against `/audio/download`
 
 ## Middleware
 
-- [ ] dynamically take in a set of query params to check instead of just one. 
+- [X] dynamically take in a set of query params to check instead of just one. 
 
 ## USEFUL LINKS
 
