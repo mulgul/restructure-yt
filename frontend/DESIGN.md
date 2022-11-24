@@ -16,3 +16,12 @@ Create video cards
 
 Formats
     - create 
+
+Get download button and fetch to work - how to save res to a file
+Fix number conversions
+
+
+Get eslint to work using native create react app eslint
+
+
+Find a way to generate css classnames and ids

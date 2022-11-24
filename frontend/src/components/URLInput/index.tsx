@@ -41,10 +41,10 @@ const URLInput = () => {
                 </form>
             </div>
             <div className='VideoData-parent'>
-                <VideoData metadata={metadata} />
+                <VideoData metadata={metadata} url={url}/>
             </div>
             <div className='Formats-parent'>
-                <Formats metadata={metadata} />
+                <Formats metadata={metadata} url={url} />
             </div>
         </div>
     )
