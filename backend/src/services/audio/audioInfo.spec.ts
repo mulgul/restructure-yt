@@ -12,11 +12,11 @@ import { fetchAudioInfo } from './audioInfo';
  */
 const mockSuccessExec = (cmd: string): Promise<string> =>
 	Promise.resolve().then(() => {
-		if (cmd.startsWith('youtube-dl --dump-json')) {
+		if (cmd.startsWith('yt-dlp --dump-json')) {
 			return mockFetchAudioMetadataResponse;
 		}
 
-		if (cmd.startsWith('youtube-dl -F')) {
+		if (cmd.startsWith('yt-dlp -F')) {
 			return mockFetchAudioFormatResponse;
 		}
 

@@ -16,7 +16,7 @@ export const fetchAudioInfo = async (
 	decodedURI: string,
 	childProcessCall: (cmd: string) => Promise<string>
 ): Promise<IParsedMetadata> => {
-	const cmd = `youtube-dl --dump-json ${decodedURI}`;
+	const cmd = `yt-dlp --dump-json ${decodedURI}`;
 
 	let jsonDump: string;
 	try {
@@ -54,14 +54,14 @@ export const fetchAudioInfo = async (
  * Fetch audio formats for a given decodedURI. This will parse all formats to make sure
  * we only use audio compatible downloads.
  *
- * @param decodedURI The decodedURI to query with youtube-dl
+ * @param decodedURI The decodedURI to query with yt-dlp
  * @param childProcessCall This will call a child process to run the given command.
  */
 export const fetchAudioFormats = async (
 	decodedURI: string,
 	childProcessCall: (cmd: string) => Promise<string>
 ): Promise<IAvailableFormats> => {
-	const cmd = `youtube-dl -F ${decodedURI} | grep audio`;
+	const cmd = `yt-dlp -F ${decodedURI} | grep audio`;
 
 	let fetchedAudioList: string;
 	try {

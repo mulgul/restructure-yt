@@ -14,7 +14,7 @@ export const fetchAudioDownload = async (
 	writePath: string,
 	decodedURI: string
 ) => {
-	const proc = await launchSpawnProcess('youtube-dl', [
+	const proc = await launchSpawnProcess('yt-dlp', [
 		'-i',
 		'-f',
 		formatId,
