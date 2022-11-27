@@ -28,9 +28,9 @@ const URLInput = () => {
       URLFormInput?.classList.add("GoodLink");
       const data = await request<IParsedMetadata>(
         `/audio/metadata?encodedURI=${encodeURIComponent(e.target.value)}`,
+        "json",
         {
-          "Content-Type": "application/json",
-          Accept: "application/json",
+          headers: { "Content-Type": "application/json" },
         }
       );
       setMetadata(data);

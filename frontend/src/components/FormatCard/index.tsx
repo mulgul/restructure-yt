@@ -1,6 +1,7 @@
+import React from "react";
 import "./FormatCard.css";
 import { IFormat, FormatProps } from "../../types/responses";
-import React from "react";
+import { DownloadFileContainer } from "../DownloadFileContainer";
 import { request } from "../../utils/fetch";
 import { mimeTypes } from "./mimeTypes";
 
@@ -8,17 +9,18 @@ const FormatCard = ({ format, title, url }: FormatProps) => {
   const formatedTitle = title.split(" ").join(",");
   const formatedPath = `/audio/download?encodedURI=${encodeURIComponent(
     url
-  )}&ext=${(format as IFormat).ext}&title=${formatedTitle}&formatId=${
-    (format as IFormat).format_id
-  }`;
-
-  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    console.log(mimeTypes[(format as IFormat).ext], "OPTIONS");
-    console.log(formatedPath, "PATH");
-    const data = await request(formatedPath, {
-      "Content-Type": `${mimeTypes[(format as IFormat).ext]}`,
-    });
-    console.log(data);
+  )}&ext=${format.ext}&title=${formatedTitle}&formatId=${format.format_id}`;
+  const contentType = mimeTypes[format.ext];
+  const downloadState = {
+    path: formatedPath,
+    options: {
+      headers: {
+        "Content-Type": `${contentType}`,
+      },
+    },
+    title,
+    ext: format.ext,
+    contentType,
   };
 
   return (
@@ -35,12 +37,7 @@ const FormatCard = ({ format, title, url }: FormatProps) => {
       <div className="format-filesize">
         <p>File Size: {(format as IFormat).filesize}</p>
       </div>
-      <button
-        className="download-btn"
-        onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleClick(e)}
-      >
-        Download
-      </button>
+      <DownloadFileContainer downloadProps={downloadState} />
     </div>
   );
 };

@@ -150,7 +150,7 @@ export const mimeTypes: Record<string, string> = {
   vrml: "model/vrml",
   war: "application/java-archive",
   wav: "audio/x-wav",
-  webm: "video/webm",
+  webm: "audio/webm",
   wma: "audio/x-ms-wma",
   wmv: "video/x-ms-wmv",
   wmx: "video/x-ms-wmx",
