@@ -33,14 +33,14 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 		const stdout: string[] = [];
 		const stderr: string[] = [];
 
-		proc.stdout.on('data', (data) => {
-			console.log(`stdout: ${data}`);
-			stdout.push(data);
+		proc.stdout.on('data', (data: Buffer) => {
+			console.log(`stdout: ${stripData(data)}`);
+			stdout.push(stripData(data));
 		});
 
 		proc.stderr.on('data', (data) => {
-			console.error(`stderr: ${data}`);
-			stderr.push(data);
+			console.error(`stderr: ${stripData(data)}`);
+			stderr.push(stripData(data));
 		});
 
 		proc.on('close', (code) => {
@@ -58,3 +58,7 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 		});
 	});
 };
+
+const stripData = (data: Buffer) => {
+	return data.toString('utf-8').trim()
+}
