@@ -48,7 +48,16 @@ Audio File.
 #### TODO
 - [X] Promisify Exec, and get it working
 - [X] Handle errors with Status Codes
-- [ ] Should there be error handling cmd attached to call?
+- [X] Should there be error handling cmd attached to call?
+- [ ] Add prisma client for postgres
+    - [ ] Oauth2 Token should be stored
+        - [ ] Gmail
+        - [ ] Apple
+    Note: Before Oauth2 is in I should really make sure to release the site first, and see what user traffic is like. Accordingly we can move forward with it. 
+    - [ ] Tracking of endpoints. See how many downloads
+- [ ] NGinx
+    - [ ] Reverse Proxy
+    - [ ] Rate limit by ip
 
 ### `launchSpawnProcess`
 - [X] Test and run the code (See if it downloads correctly)
