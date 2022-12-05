@@ -1,3 +1,5 @@
+# Ensure ffmpeg, and yt-dlp are downloaded, and if they arent download them. This supports ubuntu, debian, and macOS.
+
 uname_out="$(uname -s)"
 case "${uname_out}" in
     Linux*)     machine=Linux;;
