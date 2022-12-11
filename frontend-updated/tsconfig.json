@@ -9,6 +9,9 @@
         "jsx": "react",
         "allowJs": true,
         "moduleResolution": "node",
-        "lib": ["ES2016", "DOM"]
-    }
+        "lib": ["ES2016", "DOM"],
+    },
+    "include": [
+        "src"
+    ]
 }
