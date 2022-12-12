@@ -1,30 +1,7 @@
-import React from "react";
-import Header from "./components/Header/index";
-import URLInput from "./components/URLInput/index";
-import "./App.css";
+import * as React from 'react';
 
-// type AppProps = { num: number };
-
-// interface AppProps {
-//     num: number;
-// }
-const handleEvent = () => {
-  console.log("it works");
-};
-
-const App = () => {
-  return (
-    <div className="App-parent">
-      <div className="App-container">
-        <Header />
-        <URLInput />
-        {/* <div className="Footer-container">
-
-                    Footer - Donate
-                </div> */}
-      </div>
-    </div>
-  );
-};
+function App() {
+	return <div>{'react setup from scratch without cra testing ts'}</div>;
+}
 
 export default App;
