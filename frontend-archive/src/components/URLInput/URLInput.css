@@ -1,0 +1,42 @@
+.right-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.URLInput-container {
+    margin-top: 15vh;
+    margin-bottom: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#URLForm:focus {
+    outline: none;
+}
+
+#URLForm::placeholder {
+    color:#728F93;
+}
+
+#URLForm {
+    width: 39vw;
+    height: 3vh;
+    border: none;
+    border-radius: 7px;
+    padding-left: 10px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+}
+
+.BadLink {
+    border: solid 1px;
+    border-color: red;
+}
+
+.GoodLink {
+    border-color: green;
+
+}
