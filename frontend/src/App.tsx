@@ -1,7 +1,12 @@
 import * as React from 'react';
+import Header from './components/Header/Header';
 
 function App() {
-	return <div>{'react setup from scratch without cra testing ts'}</div>;
+	return (
+		<div className="parent-wrapper">
+			<Header />
+		</div>
+	);
 }
 
 export default App;
