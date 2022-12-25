@@ -17,5 +17,8 @@ export const request = async <T>(
 		})
 		.then((data) => {
 			return data;
+		})
+		.catch((err) => {
+			console.error(`Error: ${err}`);
 		});
 };
