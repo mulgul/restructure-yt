@@ -4,12 +4,10 @@ interface TitleProp {
 	title: string;
 }
 
-const Title = ({ title }: TitleProp) => {
+export const Title = ({ title }: TitleProp) => {
 	return (
 		<div className="title-container">
 			<h1>{title}</h1>
 		</div>
 	);
 };
-
-export default Title;
