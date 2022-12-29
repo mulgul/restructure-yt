@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Title } from './Title';
+import './Header.css';
 
 export const Header = () => {
 	return (
