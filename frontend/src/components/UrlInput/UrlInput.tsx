@@ -20,11 +20,11 @@ export const UrlInput = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
-
-		// Set background loader
+		setIsLoading(true);
 
 		const data = await fetchAudioMetadata(encodeURIComponent(url));
 		setMeta(data);
+		setIsLoading(false);
 
 		// Formats should load below. Perhaps filled in grey bits.
 	};
@@ -43,17 +43,20 @@ export const UrlInput = () => {
 	};
 
 	return (
-		<div className="url-wrapper">
-			<input
-				id="url-form"
-				type="url"
-				value={url}
-				placeholder="Enter a URL for available formats"
-				onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
-			/>
-			<button className="url-button" onClick={(e) => handleSubmit(e)}>
-				Search
-			</button>
+		<div className="url-container">
+			<div className="url-wrapper">
+				<input
+					id="url-form"
+					type="url"
+					value={url}
+					placeholder="Enter a URL for available formats"
+					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+				/>
+				<button className="url-button" onClick={(e) => handleSubmit(e)}>
+					Search
+				</button>
+			</div>
+			{isLoading ? <div> isLoading </div> : <div></div>}
 		</div>
 	);
 };
