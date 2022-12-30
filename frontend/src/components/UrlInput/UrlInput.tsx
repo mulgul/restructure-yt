@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { fetchAudioMetadata } from '../../calls/audioMetadata';
+import { IParsedMetadata } from '../../types/responses';
 import './UrlInput.css';
 
 export const UrlInput = () => {
-	const [url, setUrl]: [string, Function] = useState('');
-	const [meta, setMeta]: [{}, Function] = useState({});
+	const [url, setUrl] = useState<string>();
+	const [meta, setMeta] = useState<IParsedMetadata | undefined>();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const validateYoutubeUrl = (val: string) => {
 		return val.match(
+			//eslint-disable-next-line
 			/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/
 		);
 	};
@@ -18,8 +21,9 @@ export const UrlInput = () => {
 	) => {
 		e.preventDefault();
 
+		// Set background loader
+
 		const data = await fetchAudioMetadata(encodeURIComponent(url));
-		console.log(data);
 		setMeta(data);
 
 		// Formats should load below. Perhaps filled in grey bits.
