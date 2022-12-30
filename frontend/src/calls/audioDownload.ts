@@ -9,7 +9,7 @@ export const fetchAudioDownload = (
 ) => {
 	const path = `/audio/download?encodedURI=${encodedURI}&ext=${ext}&title=${title}&formatId=${id}`;
 	const contentType = mimeTypes[ext];
-	return request(path, 'blob', {
+	return request<Blob>(path, 'blob', {
 		headers: {
 			'Content-Type': contentType,
 		},
