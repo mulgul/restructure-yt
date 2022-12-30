@@ -33,5 +33,17 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './public/index.html'
         })
-    ]
+    ],
+    devServer: {
+        port: 8000,
+        hot: true,
+        open: true,
+        proxy: {
+            '/': {
+                target: 'http://localhost:8000',
+                router: () => 'http://localhost:8080',
+                // logLevel: 'debug' /*optional*/
+           }
+        }
+    },
 }

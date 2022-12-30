@@ -13,41 +13,43 @@ export const UrlInput = () => {
 		);
 	};
 
-	const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleSubmit = async (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
 		e.preventDefault();
 
-        const data = await fetchAudioMetadata(encodeURIComponent(url));
-        console.log(data);
-        setMeta(data);
+		const data = await fetchAudioMetadata(encodeURIComponent(url));
+		console.log(data);
+		setMeta(data);
 
-        // Formats should load below. Perhaps filled in grey bits. 
+		// Formats should load below. Perhaps filled in grey bits.
 	};
 
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        setUrl(e.target.value);
+		setUrl(e.target.value);
 
-        const URLFormInput = document.getElementById("url-form");
-        if (validateYoutubeUrl(e.target.value)) {
-            URLFormInput?.classList.remove("bad-link");
-            URLFormInput?.classList.add("good-link");
-        } else {
-            URLFormInput?.classList.remove("good-link");
-            URLFormInput?.classList.add("bad-link");
-        }
-    };
+		const URLFormInput = document.getElementById('url-form');
+		if (validateYoutubeUrl(e.target.value)) {
+			URLFormInput?.classList.remove('bad-link');
+			URLFormInput?.classList.add('good-link');
+		} else {
+			URLFormInput?.classList.remove('good-link');
+			URLFormInput?.classList.add('bad-link');
+		}
+	};
 
 	return (
-		<div className='url-wrapper'>
-				<input
-					id="url-form"
-					type="url"
-					value={url}
-					placeholder="Enter a URL for available formats"
-					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
-				/>
-                <button className='url-button' onClick={(e) => handleSubmit(e)}>
-                    Search
-                </button>
+		<div className="url-wrapper">
+			<input
+				id="url-form"
+				type="url"
+				value={url}
+				placeholder="Enter a URL for available formats"
+				onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
+			/>
+			<button className="url-button" onClick={(e) => handleSubmit(e)}>
+				Search
+			</button>
 		</div>
 	);
 };
