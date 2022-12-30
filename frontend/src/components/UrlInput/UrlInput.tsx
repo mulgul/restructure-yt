@@ -2,11 +2,12 @@ import * as React from 'react';
 import { useState } from 'react';
 import { fetchAudioMetadata } from '../../calls/audioMetadata';
 import { IParsedMetadata } from '../../types/responses';
+import { Formats } from '../Formats';
 import './UrlInput.css';
 
 export const UrlInput = () => {
 	const [url, setUrl] = useState<string>();
-	const [meta, setMeta] = useState<IParsedMetadata | undefined>();
+	const [meta, setMeta] = useState<IParsedMetadata | undefined>(undefined);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const validateYoutubeUrl = (val: string) => {
@@ -20,13 +21,12 @@ export const UrlInput = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
+
+		// TODO: card template for when the formats is loading.
 		setIsLoading(true);
-
 		const data = await fetchAudioMetadata(encodeURIComponent(url));
-		setMeta(data);
 		setIsLoading(false);
-
-		// Formats should load below. Perhaps filled in grey bits.
+		setMeta(data);
 	};
 
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +57,7 @@ export const UrlInput = () => {
 				</button>
 			</div>
 			{isLoading ? <div> isLoading </div> : <div></div>}
+			{meta ? <Formats meta={meta} url={url} /> : <div />}
 		</div>
 	);
 };
