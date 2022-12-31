@@ -56,8 +56,8 @@ export const UrlInput = () => {
 					Search
 				</button>
 			</div>
-			{isLoading ? <div> isLoading </div> : <div></div>}
-			{meta ? <Formats meta={meta} url={url} /> : <div />}
+			{isLoading ? <div> isLoading </div> : <div />}
+			{meta && !isLoading ? <Formats meta={meta} url={url} /> : <div />}
 		</div>
 	);
 };
