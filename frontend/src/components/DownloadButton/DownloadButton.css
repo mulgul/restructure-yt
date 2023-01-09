@@ -1,0 +1,8 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.button-primary {
+    background-color: blueviolet;
+}
