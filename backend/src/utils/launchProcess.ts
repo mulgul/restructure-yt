@@ -1,5 +1,7 @@
 import { exec, spawn } from 'child_process';
 
+import { Log } from '../logging/Log';
+
 /**
  * Run child process EXEC. This will always return a string, whether rejected or resolved.
  *
@@ -34,12 +36,12 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 		const stderr: string[] = [];
 
 		proc.stdout.on('data', (data: Buffer) => {
-			console.log(`stdout: ${stripData(data)}`);
+			Log.logger.info(`stdout: ${stripData(data)}`);
 			stdout.push(stripData(data));
 		});
 
 		proc.stderr.on('data', (data) => {
-			console.error(`stderr: ${stripData(data)}`);
+			Log.logger.error(`stderr: ${stripData(data)}`);
 			stderr.push(stripData(data));
 		});
 
@@ -60,5 +62,5 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 };
 
 const stripData = (data: Buffer) => {
-	return data.toString('utf-8').trim()
-}
+	return data.toString('utf-8').trim();
+};
