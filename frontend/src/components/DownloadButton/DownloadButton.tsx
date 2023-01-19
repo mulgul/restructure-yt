@@ -40,9 +40,9 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	const getFileName = () => {
 		switch (ext) {
 			case 'm4a':
-				return `audio.mp4`;
+				return `${title.split(' ').join('-')}.mp4`;
 			default:
-				return `audio.${ext}`;
+				return `${title.split(' ').join('-')}.${ext}`;
 		}
 	};
 
@@ -65,6 +65,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		contentType: mimeTypes[ext],
 	});
 
+	// TODO: Write showAlert logic
 	return (
 		<div className="button-container">
 			<a href={fileUrl} download={name} className="hidden" ref={ref}></a>

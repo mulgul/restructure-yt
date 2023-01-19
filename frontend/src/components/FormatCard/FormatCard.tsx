@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IFormat } from '../../types/responses';
 import { convertFileSize } from '../../utils/convertFileSize';
-import { DownloadButton, ButtonState } from '../DownloadButton';
+import { DownloadButton } from '../DownloadButton';
 import './FormatCard.css';
 
 interface IFormatCardProps {
