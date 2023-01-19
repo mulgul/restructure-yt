@@ -70,6 +70,7 @@ export const fetchAudioFormats = async (
 		throw err as string;
 	}
 
+	// TODO: clean this logic up.
 	const audioList = fetchedAudioList
 		.split(/\r?\n/)
 		.map((str) => str.replace(/\s+/g, ' ').trim())
