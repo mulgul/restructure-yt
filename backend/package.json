@@ -8,6 +8,7 @@
     "main": "node ./build/main.js",
     "dev": "tsc-watch --onSuccess \"yarn run main\"",
     "lint": "eslint . --ext .ts",
+    "lint:fix": "yarn lint --fix",
     "test": "NODE_ENV=test jest --detectOpenHandles --silent"
   },
   "keywords": [],
