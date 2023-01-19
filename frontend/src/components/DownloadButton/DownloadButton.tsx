@@ -1,4 +1,8 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { fetchAudioDownload } from '../../calls/audioDownload';
+import { useDownloadFile } from '../../hooks/useDownloadFile';
+import { mimeTypes } from '../../utils/mimeTypes';
 import './DownloadButton.css';
 
 export enum ButtonState {
@@ -6,23 +10,67 @@ export enum ButtonState {
 	Loading = 'Loading',
 }
 
-interface IButtonProps {
-	readonly buttonState: ButtonState;
-	readonly onClick: () => void;
-	readonly label: string;
+interface IDownloadProps {
+	ext: string;
+	title: string;
+	url: string;
+	id: string;
 }
 
-export const DownloadButton: React.FC<IButtonProps> = ({
-	buttonState,
-	onClick,
-	label,
+export const DownloadButton: React.FC<IDownloadProps> = ({
+	ext,
+	title,
+	url,
+	id,
 }) => {
-	const isLoading = buttonState === ButtonState.Loading;
+	const { Primary, Loading } = ButtonState;
+	const [btnState, setbBtnState] = useState(Primary);
+	const [showAlert, setShowAlert] = useState<boolean>(false);
+	const preDownloading = () => setbBtnState(Loading);
+	const postDownloading = () => setbBtnState(Primary);
+
+	const onErrorDownloadFile = () => {
+		setbBtnState(ButtonState.Primary);
+		setShowAlert(true);
+		setTimeout(() => {
+			setShowAlert(false);
+		}, 3000);
+	};
+
+	const getFileName = () => {
+		switch (ext) {
+			case 'm4a':
+				return `audio.mp4`;
+			default:
+				return `audio.${ext}`;
+		}
+	};
+
+	const downloadFile = async (
+		url: string,
+		title: string,
+		ext: string,
+		id: string
+	) => {
+		// throw new Error("uncomment this line to mock failure of API");
+		return await fetchAudioDownload(encodeURIComponent(url), title, ext, id);
+	};
+
+	const { ref, fileUrl, download, name } = useDownloadFile({
+		apiDefinition: () => downloadFile(url, title, ext, id),
+		preDownloading,
+		postDownloading,
+		onError: onErrorDownloadFile,
+		getFileName,
+		contentType: mimeTypes[ext],
+	});
+
 	return (
 		<div className="button-container">
-			<button onClick={onClick} className="button-primary">
-				{isLoading && 'isLoading'}
-				{isLoading && label}
+			<a href={fileUrl} download={name} className="hidden" ref={ref}></a>
+			<button onClick={download} className="button-primary">
+				{btnState === Loading && 'isLoading'}
+				{btnState === Primary && 'Download'}
 			</button>
 		</div>
 	);

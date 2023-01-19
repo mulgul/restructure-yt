@@ -5,15 +5,24 @@ import { DownloadButton, ButtonState } from '../DownloadButton';
 import './FormatCard.css';
 
 interface IFormatCardProps {
+	ext: string;
 	format: IFormat;
-	key: string;
+	id: string;
+	title: string;
+	url: string;
 }
 
-export const FormatCard = ({ format, key }: IFormatCardProps) => {
+export const FormatCard = ({
+	ext,
+	format,
+	id,
+	title,
+	url,
+}: IFormatCardProps) => {
 	return (
 		<div className="format-card-container">
 			<div className="format-ext">
-				<p className="format-p">File Extension: {`format.ext (${key})`}</p>
+				<p className="format-p">File Extension: {`format.ext (${id})`}</p>
 			</div>
 			<div className="format-codec">
 				<p className="format-p">{format.acodec}</p>
@@ -26,11 +35,7 @@ export const FormatCard = ({ format, key }: IFormatCardProps) => {
 					File Size: {convertFileSize(format.filesize, true)}
 				</p>
 			</div>
-			<DownloadButton
-				buttonState={ButtonState.Primary}
-				onClick={() => null}
-				label={'download'}
-			/>
+			<DownloadButton ext={ext} title={title} url={url} id={id} />
 		</div>
 	);
 };
