@@ -19,7 +19,6 @@ export class Log {
 			return this._logger;
 		}
 
-		// Note: there is a `fileTransport` that gets added in main.
 		this._transports = [
 			consoleTransport(),
 			fileTransport('info', 'combined.log'),
