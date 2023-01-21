@@ -8,7 +8,7 @@ esac
 
 echo ${machine}
 
-declare -a pkgs=("ffmpeg" "yt-dlp" "nginx")
+declare -a pkgs=("ffmpeg" "yt-dlp")
 if [[ $machine = "Darwin" ]]
 then
     command -v brew >/dev/null 2>&1 || (echo "Homebrew is not installed. Exiting." && exit 1); 
