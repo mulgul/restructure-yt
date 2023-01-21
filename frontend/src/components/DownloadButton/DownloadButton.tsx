@@ -52,7 +52,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		ext: string,
 		id: string
 	) => {
-		// throw new Error("uncomment this line to mock failure of API");
 		return await fetchAudioDownload(encodeURIComponent(url), title, ext, id);
 	};
 
@@ -65,9 +64,9 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		contentType: mimeTypes[ext],
 	});
 
-	// TODO: Write showAlert logic
 	return (
 		<div className="button-container">
+			{showAlert ? <div>Error Downloading File</div> : <div></div>}
 			<a href={fileUrl} download={name} className="hidden" ref={ref}></a>
 			<button onClick={download} className="button-primary">
 				{btnState === Loading && 'isLoading'}
