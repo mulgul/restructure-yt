@@ -1,18 +1,9 @@
-.format-cards-parent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-evenly;
-    width: 100%;
-    height: 60%;
-    background: wheat;
-}
-
-.formats-conatiner {
+.formats-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
+    height: 85%;
 }
 
 .formats-title {
@@ -28,5 +19,9 @@
 }
 
 .format-cards-parent {
-
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
 }

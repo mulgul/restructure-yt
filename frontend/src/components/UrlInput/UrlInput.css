@@ -1,12 +1,11 @@
 .url-container {
     width: 40vw;
+    height: 85vh;
 }
 
 .url-form {
     width: 39vw;
-    /* height: 3vh; */
     height: 35px;
-    /* border: none; */
     border: 1px solid transparent;
     border-radius: 7px;
     padding-left: 10px;
@@ -17,8 +16,8 @@
 }
 
 .url-wrapper {
-    margin-top: 15vh;
-    margin-bottom: 10vh;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
     width: 100%;
     display: flex;
     justify-content: center;

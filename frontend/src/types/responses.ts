@@ -31,6 +31,7 @@ export interface IFormat {
 	http_headers: Record<string, string>;
 	downloader_options: { http_chunk_size: number };
 	quality: number;
+	audio_ext: string;
 }
 
 interface IFragments {
