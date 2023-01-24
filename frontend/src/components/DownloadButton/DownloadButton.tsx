@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { fetchAudioDownload } from '../../calls/audioDownload';
 import { useDownloadFile } from '../../hooks/useDownloadFile';
 import { mimeTypes } from '../../utils/mimeTypes';
+import {BsDownload} from 'react-icons/bs'
+
 import './DownloadButton.css';
 
 export enum ButtonState {
@@ -67,11 +69,14 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	return (
 		<div className="button-container">
 			{showAlert ? <div>Error Downloading File</div> : <div></div>}
-			<a href={fileUrl} download={name} className="hidden" ref={ref}></a>
-			<button onClick={download} className="button-primary">
+			<a href={fileUrl} download={name} className="button-primary" ref={ref} onClick={download}>
 				{btnState === Loading && 'isLoading'}
-				{btnState === Primary && 'Download'}
-			</button>
+				{btnState === Primary && <BsDownload className='button-icon'/>}
+			</a>
+			{/* <button onClick={download} className="button-primary">
+				{btnState === Loading && 'isLoading'}
+				{btnState === Primary && <BsDownload className='button-icon'/>}
+			</button> */}
 		</div>
 	);
 };

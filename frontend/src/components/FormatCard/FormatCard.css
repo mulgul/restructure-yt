@@ -13,11 +13,9 @@
 
 .format-p {
     width: 100%;
+    font-size: 100%;
 }
 
-.format-ext {
-    width: 3vw;
-}
 .format-codec {
     width: 8vw;
 }
