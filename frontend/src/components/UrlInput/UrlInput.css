@@ -7,6 +7,8 @@
     padding-left: 10px;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
     outline: none;
+    background: #f9f9f9;
+    margin-right: 5px;
 }
 
 .url-wrapper {
@@ -28,4 +30,14 @@
 
 .url-button {
     cursor: pointer;
+    background: #f9f9f9;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+}
+
+.url-button:hover {
+    border: 1px solid #f9f9f9;
+    background: rgb(33, 30, 30);
+    color: #f9f9f9;
 }
