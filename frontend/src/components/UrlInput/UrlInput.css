@@ -1,6 +1,7 @@
 .url-form {
     width: 39vw;
-    height: 3vh;
+    /* height: 3vh; */
+    height: 35px;
     /* border: none; */
     border: 1px solid transparent;
     border-radius: 7px;
@@ -29,11 +30,13 @@
 }
 
 .url-button {
-    cursor: pointer;
+    height: 38px;
+    width: 55px;
     background: #f9f9f9;
     border-radius: 7px;
     border: 1px solid transparent;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+    cursor: pointer;
 }
 
 .url-button:hover {
@@ -41,3 +44,10 @@
     background: rgb(33, 30, 30);
     color: #f9f9f9;
 }
+
+
+
+
+
+
+
