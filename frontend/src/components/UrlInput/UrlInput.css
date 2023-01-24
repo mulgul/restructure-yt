@@ -1,10 +1,12 @@
-#url-form {
+.url-form {
     width: 39vw;
     height: 3vh;
-    border: none;
+    /* border: none; */
+    border: 1px solid transparent;
     border-radius: 7px;
     padding-left: 10px;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+    outline: none;
 }
 
 .url-wrapper {
@@ -16,10 +18,14 @@
 }
 
 .bad-link {
-    border: solid 1px;
-    border-color: red;
+    border: solid 1px rgb(234, 92, 92);
+    /* border-color: red; */
 }
 
 .good-link {
-    border-color: green;
+    border-color: rgb(23, 202, 23);
+}
+
+.url-button {
+    cursor: pointer;
 }

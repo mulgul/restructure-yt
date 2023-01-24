@@ -32,7 +32,7 @@ export const UrlInput = () => {
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUrl(e.target.value);
 
-		const URLFormInput = document.getElementById('url-form');
+		const URLFormInput = document.getElementsByClassName('url-form')[0];
 		if (validateYoutubeUrl(e.target.value)) {
 			URLFormInput?.classList.remove('bad-link');
 			URLFormInput?.classList.add('good-link');
@@ -46,7 +46,7 @@ export const UrlInput = () => {
 		<div className="url-container">
 			<div className="url-wrapper">
 				<input
-					id="url-form"
+					className='url-form'
 					type="url"
 					value={url}
 					placeholder="Enter a URL for available formats"
