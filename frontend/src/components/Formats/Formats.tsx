@@ -13,7 +13,9 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 
 	return (
 		<div className="formats-container">
-			<h2>Formats</h2>
+			<div className='formats-title'>
+				<h2>Formats</h2>
+			</div>
 			<div className="format-cards-parent">
 				{meta.formats.map((format) => (
 					<FormatCard

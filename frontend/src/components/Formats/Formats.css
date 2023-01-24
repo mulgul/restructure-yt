@@ -5,11 +5,28 @@
     justify-content: space-evenly;
     width: 100%;
     height: 60%;
-    margin-left: 1vw;
+    background: wheat;
 }
 
 .formats-conatiner {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+}
+
+.formats-title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.formats-title h2:first-child {
+    font-weight: 400;
+}
+
+.format-cards-parent {
+
 }
