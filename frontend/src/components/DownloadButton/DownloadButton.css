@@ -8,8 +8,6 @@
 .button-primary {
     height: 100%;
     width: 55%;
-    text-decoration: none;
-    /* color: aquamarine; */
     color: rgb(33, 30, 30);
     cursor: pointer;
 }
@@ -23,4 +21,11 @@
 .download-spinner {
     top: 7px;
     position: relative;
+}
+
+.button-ref {
+    pointer-events: none;
+    cursor: default;
+    width: 30px;
+    height: 30px;
 }
