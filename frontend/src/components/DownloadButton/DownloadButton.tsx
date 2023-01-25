@@ -4,6 +4,7 @@ import { fetchAudioDownload } from '../../calls/audioDownload';
 import { useDownloadFile } from '../../hooks/useDownloadFile';
 import { mimeTypes } from '../../utils/mimeTypes';
 import {BsDownload} from 'react-icons/bs'
+import {Spinner} from '../UrlInput/Spinner'
 
 import './DownloadButton.css';
 
@@ -70,13 +71,9 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		<div className="button-container">
 			{showAlert ? <div>Error Downloading File</div> : <div></div>}
 			<a href={fileUrl} download={name} className="button-primary" ref={ref} onClick={download}>
-				{btnState === Loading && 'isLoading'}
+				{btnState === Loading && <div className='download-spinner'><Spinner/></div>}
 				{btnState === Primary && <BsDownload className='button-icon'/>}
 			</a>
-			{/* <button onClick={download} className="button-primary">
-				{btnState === Loading && 'isLoading'}
-				{btnState === Primary && <BsDownload className='button-icon'/>}
-			</button> */}
 		</div>
 	);
 };

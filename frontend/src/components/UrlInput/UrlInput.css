@@ -35,7 +35,8 @@
 .url-button {
     height: 38px;
     width: 55px;
-    background: #f9f9f9;
+    background: rgb(23, 112, 106);
+    color: #f9f9f9;
     border-radius: 7px;
     border: 1px solid transparent;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
@@ -43,9 +44,7 @@
 }
 
 .url-button:hover {
-    border: 1px solid #f9f9f9;
-    background: rgb(33, 30, 30);
-    color: #f9f9f9;
+    color: rgb(126, 175, 145);
 }
 
 
@@ -53,4 +52,4 @@
 
 
 
-
+/* rgb(126, 175, 145) 7.1%, rgb(23, 112, 106) 67.4% ) */
