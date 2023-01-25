@@ -7,8 +7,10 @@
 
 .button-primary {
     height: 100%;
-    width: 55%;
+    width: 70%;
     color: rgb(33, 30, 30);
+    background: none;
+    border: none;
     cursor: pointer;
 }
 
@@ -26,6 +28,6 @@
 .button-ref {
     pointer-events: none;
     cursor: default;
-    width: 30px;
-    height: 30px;
+    width: 0px;
+    height: 0px;
 }

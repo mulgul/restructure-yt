@@ -44,7 +44,9 @@
 }
 
 .url-button:hover {
-    color: rgb(126, 175, 145);
+    /* color: rgb(126, 175, 145); */
+    background: transparent;
+    border: 2px solid rgb(23, 112, 106);
 }
 
 

@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    height: 85%;
+    height: 75%;
 }
 
 .formats-title {
@@ -16,7 +16,8 @@
 
 .formats-title h2:first-child {
     font-weight: 400;
-    color: rgb(33, 30, 30);
+    /* color: rgb(33, 30, 30); */
+    color: #f9f9f9;
 }
 
 .format-cards-parent {

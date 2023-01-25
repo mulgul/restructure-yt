@@ -1,6 +1,13 @@
 #root {
     /* background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgb(216, 199, 150) 67.4% ); */
-    background-image: linear-gradient( 174.2deg,  rgb(126, 175, 145) 7.1%, rgb(23, 112, 106) 67.4% );
+    /* background-image: linear-gradient( 174.2deg,  rgb(126, 175, 145) 7.1%, rgb(23, 112, 106) 67.4% ); */
+    /* background: url('../public/white-discs.jpg'); */
+    /* background: url('../public/blue-stacks.jpg'); */
+    /* background: url('../public/purple-ripple.jpg'); */
+    background: url('../public/blue-waves.jpg');
+    
+    background-position: 0px -500px;
+    background-repeat: no-repeat;
     height: 100%;
     min-height: 100vh;
     overflow: auto;
