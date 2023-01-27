@@ -4,9 +4,10 @@
     /* background: url('../public/white-discs.jpg'); */
     /* background: url('../public/blue-stacks.jpg'); */
     /* background: url('../public/purple-ripple.jpg'); */
-    background: url('../public/blue-waves.jpg');
+    /* background: url('../public/blue-waves.jpg'); */
+    background: url('../public/blue-diagonal-ai.png');
     
-    background-position: 0px -500px;
+    background-position: -300px -500px;
     background-repeat: no-repeat;
     height: 100%;
     min-height: 100vh;
