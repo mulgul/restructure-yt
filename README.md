@@ -45,7 +45,7 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 
 - [ ] CSS
     - [ ] Loading template for format Cards
-    - [ ] Format Cards
-    - [ ] Header
+    - [X] Format Cards
+        - [ ] Expanding format cards
+    - [X] Header
     - [ ] Footer
-    - [ ] Search bar
