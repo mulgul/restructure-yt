@@ -10,7 +10,7 @@ export const Title = ({ title, subtitle }: TitleProp) => {
 	return (
 		<div className="title-container">
 			<h1 className="title-text">{title}</h1>
-			<h2 className='subtitle-text'>{subtitle}</h2>
+			<h2 className="subtitle-text">{subtitle}</h2>
 		</div>
 	);
 };

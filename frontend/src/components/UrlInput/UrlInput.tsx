@@ -54,7 +54,7 @@ export const UrlInput = () => {
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
 				/>
 				<button className="url-button" onClick={(e) => handleSubmit(e)}>
-					{isLoading ? <Spinner/> : 'Search'}
+					{isLoading ? <Spinner /> : 'Search'}
 				</button>
 			</div>
 			{meta && !isLoading ? <Formats meta={meta} url={url} /> : <div />}
