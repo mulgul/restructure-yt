@@ -24,6 +24,7 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 						ext={format.ext}
 						title={meta.title}
 						url={url}
+						key={format.format_id}
 					/>
 				))}
 			</div>
