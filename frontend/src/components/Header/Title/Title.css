@@ -1,7 +1,12 @@
 .title-text {
     font-weight: 600;
-    size: 100%;
-    /* color: rgb(33, 30, 30); */
+    font-size: 5vh;
     color: #f9f9f9;
+}
 
+.subtitle-text{
+    font-weight: 500;
+    font-size: 2vh;
+    color: #f9f9f9;
+    margin-top: 1vh;
 }

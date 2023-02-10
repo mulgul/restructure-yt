@@ -5,7 +5,8 @@ import './Header.css';
 export const Header = () => {
 	return (
 		<div className="header-container">
-			<Title title={'Youtube Audio Downloader'}></Title>
+			{/* <Title title={'Youtube Audio Downloader'}></Title> */}
+			<Title title={'Restructure'} subtitle={'Youtube to audio file converter'}></Title>
 		</div>
 	);
 };
