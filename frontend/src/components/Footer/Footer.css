@@ -1,0 +1,15 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.footer-attribute {
+    margin-right: 20px;
+    font-size: 14px;
+}
+
+.footer-attribute-link {
+    text-decoration: none;
+    color: rgb(10, 10, 10);
+}

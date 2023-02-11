@@ -1,8 +1,32 @@
 .button-container {
     display: flex;
     justify-content: center;
+    height: 100%;
+    width: 10%;
 }
 
 .button-primary {
-    background-color: blueviolet;
+    height: 100%;
+    width: 65%;
+    color: rgb(33, 30, 30);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-icon {
+    height: 100%;
+    width: 100%;
+}
+
+.download-spinner {
+    top: 7px;
+    position: relative;
+}
+
+.button-ref {
+    pointer-events: none;
+    cursor: default;
+    width: 0px;
+    height: 0px;
 }

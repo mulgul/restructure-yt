@@ -10,7 +10,7 @@ export const request = async <T>(
 			}
 
 			if (type === 'blob') {
-				return res.blob;
+				return res.blob();
 			}
 
 			return res.json();

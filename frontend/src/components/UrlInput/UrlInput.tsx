@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { fetchAudioMetadata } from '../../calls/audioMetadata';
 import { IParsedMetadata } from '../../types/responses';
 import { Formats } from '../Formats';
+import { Spinner } from './Spinner';
 import './UrlInput.css';
 
 export const UrlInput = () => {
@@ -32,7 +33,7 @@ export const UrlInput = () => {
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
 		setUrl(e.target.value);
 
-		const URLFormInput = document.getElementById('url-form');
+		const URLFormInput = document.getElementsByClassName('url-form')[0];
 		if (validateYoutubeUrl(e.target.value)) {
 			URLFormInput?.classList.remove('bad-link');
 			URLFormInput?.classList.add('good-link');
@@ -46,17 +47,16 @@ export const UrlInput = () => {
 		<div className="url-container">
 			<div className="url-wrapper">
 				<input
-					id="url-form"
+					className="url-form"
 					type="url"
 					value={url}
 					placeholder="Enter a URL for available formats"
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
 				/>
 				<button className="url-button" onClick={(e) => handleSubmit(e)}>
-					Search
+					{isLoading ? <Spinner /> : 'Search'}
 				</button>
 			</div>
-			{isLoading ? <div> isLoading </div> : <div />}
 			{meta && !isLoading ? <Formats meta={meta} url={url} /> : <div />}
 		</div>
 	);

@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { fetchAudioDownload } from '../../calls/audioDownload';
 import { useDownloadFile } from '../../hooks/useDownloadFile';
 import { mimeTypes } from '../../utils/mimeTypes';
+import { BsDownload } from 'react-icons/bs';
+import { Spinner } from '../UrlInput/Spinner';
+
 import './DownloadButton.css';
 
 export enum ButtonState {
@@ -38,12 +41,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	};
 
 	const getFileName = () => {
-		switch (ext) {
-			case 'm4a':
-				return `${title.split(' ').join('-')}.mp4`;
-			default:
-				return `${title.split(' ').join('-')}.${ext}`;
-		}
+		return `${title.split(' ').join('-')}.${ext}`;
 	};
 
 	const downloadFile = async (
@@ -52,11 +50,15 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		ext: string,
 		id: string
 	) => {
-		return await fetchAudioDownload(encodeURIComponent(url), title, ext, id);
+		try {
+			return await fetchAudioDownload(encodeURIComponent(url), title, ext, id);
+		} catch (e) {
+			console.error(e);
+		}
 	};
 
 	const { ref, fileUrl, download, name } = useDownloadFile({
-		apiDefinition: () => downloadFile(url, title, ext, id),
+		apiDefinition: async () => await downloadFile(url, title, ext, id),
 		preDownloading,
 		postDownloading,
 		onError: onErrorDownloadFile,
@@ -67,10 +69,14 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	return (
 		<div className="button-container">
 			{showAlert ? <div>Error Downloading File</div> : <div></div>}
-			<a href={fileUrl} download={name} className="hidden" ref={ref}></a>
+			<a href={fileUrl} download={name} ref={ref} className="button-ref"></a>
 			<button onClick={download} className="button-primary">
-				{btnState === Loading && 'isLoading'}
-				{btnState === Primary && 'Download'}
+				{btnState === Loading && (
+					<div className="download-spinner">
+						<Spinner />
+					</div>
+				)}
+				{btnState === Primary && <BsDownload className="button-icon" />}
 			</button>
 		</div>
 	);

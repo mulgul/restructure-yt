@@ -1,25 +1,48 @@
-#url-form {
+.url-container {
+    width: 40vw;
+    height: 85vh;
+}
+
+.url-form {
     width: 39vw;
-    height: 3vh;
-    border: none;
+    height: 35px;
+    border: 1px solid transparent;
     border-radius: 7px;
     padding-left: 10px;
     box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+    outline: none;
+    background: #f9f9f9;
+    margin-right: 5px;
 }
 
 .url-wrapper {
-    margin-top: 15vh;
-    margin-bottom: 10vh;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .bad-link {
-    border: solid 1px;
-    border-color: red;
+    border: solid 1px rgb(234, 92, 92);
 }
 
 .good-link {
-    border-color: green;
+    border-color: rgb(23, 202, 23);
+}
+
+.url-button {
+    height: 38px;
+    width: 55px;
+    background: rgb(23, 112, 106);
+    color: #f9f9f9;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 4px 0px;
+    cursor: pointer;
+}
+
+.url-button:hover {
+    background: transparent;
+    border: 2px solid rgb(23, 112, 106);
 }
