@@ -45,7 +45,7 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 	return (
 		<div className="formats-container">
 			<div className="formats-title">
-				<h2>Formats</h2>
+				<h2>Downloadable Formats</h2>
 			</div>
 			<div className="format-cards-parent">
 				{filterFormats(meta.formats).map((format) => (
