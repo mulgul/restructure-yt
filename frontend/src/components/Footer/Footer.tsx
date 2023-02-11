@@ -13,8 +13,6 @@ export const Footer = () => {
 					Freepik
 				</a>
 			</p>
-			{/* <div>Footer</div> */}
-			{/* <p className='footer-attribute' >Photo by <a className='footer-attribute-link' href="https://unsplash.com/es/@simonppt?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">SIMON LEE</a> on <a className='footer-attribute-link' href="https://unsplash.com/photos/zft-W1kVEhg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p> */}
 		</div>
 	);
 };

@@ -78,10 +78,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 				)}
 				{btnState === Primary && <BsDownload className="button-icon" />}
 			</button>
-			{/* <a href={fileUrl} download={name} className="button-primary" ref={ref} onClick={download}>
-				{btnState === Loading && <div className='download-spinner'><Spinner/></div>}
-				{btnState === Primary && <BsDownload className='button-icon'/>}
-			</a> */}
 		</div>
 	);
 };

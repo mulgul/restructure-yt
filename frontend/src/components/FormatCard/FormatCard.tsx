@@ -21,9 +21,6 @@ export const FormatCard = ({
 }: IFormatCardProps) => {
 	return (
 		<div className="format-card-container">
-			{/* <div className="format-ext">
-				<p className="format-p">File Type: {`format.ext (${id})`}</p>
-			</div> */}
 			<div className="format-codec">
 				<p className="format-p">File Type: {format.audio_ext}</p>
 			</div>
