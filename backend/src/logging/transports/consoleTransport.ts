@@ -1,3 +1,4 @@
+import dotenv from 'dotenv';
 import { format, transports } from 'winston';
 
 import {
@@ -7,6 +8,8 @@ import {
 	timeStamp,
 } from '../transformers';
 import { ITransformableInfo } from '../types';
+
+dotenv.config();
 
 /**
  * Console transport for winston logger.
