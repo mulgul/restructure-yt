@@ -70,7 +70,7 @@ router.get(
 				if (err) {
 					logger.error(err);
 				}
-				console.log(`File Path: ${filePath} DELETED`);
+				logger.info(`File Path: ${filePath} DELETED`);
 			});
 		});
 	}
