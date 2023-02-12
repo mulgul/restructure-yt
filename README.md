@@ -23,6 +23,15 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 3. `export LOG_LEVEL=http`
 4. `yarn build && yarn main` or `yarn dev` for development mode.
 
+### Logging
+
+- `LOG_LEVEL`: The lowest priority log level to surface, defaults to `info`. Tip: set to `http`
+    to see all HTTP requests.
+- `LOG_JSON`:Whether or not to have logs formatted as JSON, defaults to `false`.
+    Useful when using `stdout` to programmatically process Sidecar log data.
+- `LOG_STRIP_ANSI`: Whether or not to strip ANSI characters from logs, defaults
+    to `false`. Useful when logging RPC calls with JSON written to transports.
+
 ## Running the Frontend
 
 1. `cd frontend`
@@ -38,7 +47,6 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 ### Backend:
 
 - [ ] Clean up static downtime route.
-- [ ] DOTENV for local env file.
 - [ ] Ship the backend as an npm package.
 
 ### Frontend
