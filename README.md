@@ -57,3 +57,13 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
         - [ ] Expanding format cards
     - [X] Header
     - [ ] Footer
+    - [ ] Download bar? 
+        Notes: I think this can happen by first taking the byte size from the metadata, adding the two fields to the headers:
+        ```
+            "Accept-Ranges": "bytes",
+            "Content-Length": "byte-size"
+        ```
+        I think this should allow us to have a download bar as the fetch will happen in chunks. 
+
+        In addition to that on the react side of things I would reference this as a good guide to getting that done:
+        https://javascript.info/fetch-progress
