@@ -58,7 +58,14 @@ export const UrlInput = () => {
 					{isLoading ? <Spinner /> : 'Search'}
 				</button>
 			</div>
-			{meta && !isLoading ? <div><MetaDataCard meta={meta} /><Formats meta={meta} url={url} /></div> : <div />}
+			{meta && !isLoading ? (
+				<div>
+					<MetaDataCard meta={meta} />
+					<Formats meta={meta} url={url} />
+				</div>
+			) : (
+				<div />
+			)}
 		</div>
 	);
 };

@@ -1,1 +1,1 @@
-import { MetaDataCard } from "./MetadataCard";
+export { MetaDataCard } from './MetadataCard';
