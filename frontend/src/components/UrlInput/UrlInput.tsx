@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { fetchAudioMetadata } from '../../calls/audioMetadata';
 import { IParsedMetadata } from '../../types/responses';
 import { Formats } from '../Formats';
+import { MetaDataCard } from '../MetadataCard/MetadataCard';
 import { Spinner } from './Spinner';
 import './UrlInput.css';
 
@@ -57,7 +58,7 @@ export const UrlInput = () => {
 					{isLoading ? <Spinner /> : 'Search'}
 				</button>
 			</div>
-			{meta && !isLoading ? <Formats meta={meta} url={url} /> : <div />}
+			{meta && !isLoading ? <div><MetaDataCard meta={meta} /><Formats meta={meta} url={url} /></div> : <div />}
 		</div>
 	);
 };
