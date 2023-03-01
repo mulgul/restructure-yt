@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IParsedMetadata } from '../../types/responses';
-import { formatViews } from '../../utils/formatViews'
+import { formatViews } from '../../utils/formatViews';
 import { formatDate } from '../../utils/formatDate';
 import { formatDuration } from '../../utils/formatDuration';
 import './MetadataCard.css';
@@ -19,17 +19,22 @@ export const MetaDataCard = ({ meta }: IMetadataCardProps) => {
 					alt="Thumbnail of staged video to be downloaded"
 				/>
 			</div>
-			<div className='metadata-card-info'>
+			<div className="metadata-card-info">
 				<div>
 					<p className="metadata-card-title-p">{meta.title}</p>
 				</div>
 				<div className="metadata-card-views-uploadDate">
-					<p className="metadata-card-p">Total Views: {formatViews(meta.views)}</p>
-					<p className="metadata-card-p">Uploaded: {formatDate(meta.uploadDate)}</p>
-					<p className="metadata-card-p">Duration: {formatDuration(meta.duration)}</p>
+					<p className="metadata-card-p">
+						Total Views: {formatViews(meta.views)}
+					</p>
+					<p className="metadata-card-p">
+						Uploaded: {formatDate(meta.uploadDate)}
+					</p>
+					<p className="metadata-card-p">
+						Duration: {formatDuration(meta.duration)}
+					</p>
 				</div>
-				<div>
-				</div>
+				<div></div>
 			</div>
 		</div>
 	);
