@@ -1,0 +1,51 @@
+.metadata-card-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 13vh;
+    background: #f9f9f9;
+    box-shadow: rgb(0 0 0 / 30%) 0px 2px 4px 0px;
+    border-radius: 7px;
+    margin-bottom: 2vh;
+    transition: ease 0.1s;
+}
+
+.metadata-card-thumnail {
+    height: 85%;
+    width: 20%;
+    margin-left: 0.5vw;
+    margin-right: 1vh;
+}
+
+.metadata-card-img {
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.metadata-card-info{
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: space-between;
+
+}
+
+
+.metadata-card-title-p {
+    margin-bottom: 1vh;
+    font-size: 1.75vh;
+    font-weight: 600;
+    margin-bottom: 1vh;
+}
+
+.metadata-card-views-uploadDate {
+    display: flex;
+    flex-direction: column;
+}
+
+.metadata-card-p {
+    padding-bottom: 1vh;
+}
+
