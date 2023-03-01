@@ -5,6 +5,6 @@ interface ISpinnerName {
 	spinnerName: string;
 }
 
-export const Spinner = ({spinnerName}: ISpinnerName) => {
+export const Spinner = ({ spinnerName }: ISpinnerName) => {
 	return <span className={spinnerName}></span>;
 };
