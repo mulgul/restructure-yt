@@ -8,7 +8,7 @@
 .button-primary {
     height: 100%;
     width: 65%;
-    color: rgb(33, 30, 30);
+    color: #211E1E;
     background: none;
     border: none;
     cursor: pointer;
@@ -20,7 +20,7 @@
 }
 
 .download-spinner {
-    top: 7px;
+    top: 4px;
     position: relative;
 }
 

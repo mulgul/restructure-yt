@@ -73,7 +73,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 			<button onClick={download} className="button-primary">
 				{btnState === Loading && (
 					<div className="download-spinner">
-						<Spinner />
+						<Spinner spinnerName={'loader-black'}/>
 					</div>
 				)}
 				{btnState === Primary && <BsDownload className="button-icon" />}

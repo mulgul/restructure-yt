@@ -1,6 +1,10 @@
 import * as React from 'react';
 import './Spinner.css';
 
-export const Spinner = () => {
-	return <span className="loader"></span>;
+interface ISpinnerName {
+	spinnerName: string;
+}
+
+export const Spinner = ({spinnerName}: ISpinnerName) => {
+	return <span className={spinnerName}></span>;
 };
