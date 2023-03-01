@@ -1,0 +1,1 @@
+export { MetaDataCard } from './MetadataCard';
