@@ -16,7 +16,7 @@ describe('launchProcess', () => {
 			try {
 				await launchExecProcess('asdf');
 			} catch (e) {
-				const check = (e as string).startsWith('/bin/sh:')
+				const check = (e as string).startsWith('/bin/sh:');
 				expect(check).toBe(true);
 			}
 		});
