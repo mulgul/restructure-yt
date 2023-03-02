@@ -37,33 +37,3 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 1. `cd frontend`
 2. `yarn install`
 3. `yarn build && yarn start`
-
-## TODO:
-
-### General
-
-- [ ] License on each file, and main page.
-
-### Backend:
-
-- [ ] Clean up static downtime route.
-- [ ] Ship the backend as an npm package.
-
-### Frontend
-
-- [ ] CSS
-    - [ ] Loading template for format Cards
-    - [X] Format Cards
-        - [ ] Expanding format cards
-    - [X] Header
-    - [ ] Footer
-    - [ ] Download bar? 
-        Notes: I think this can happen by first taking the byte size from the metadata, adding the two fields to the headers:
-        ```
-            "Accept-Ranges": "bytes",
-            "Content-Length": "byte-size"
-        ```
-        I think this should allow us to have a download bar as the fetch will happen in chunks. 
-
-        In addition to that on the react side of things I would reference this as a good guide to getting that done:
-        https://javascript.info/fetch-progress
