@@ -1,4 +1,8 @@
-import { launchExecProcess, launchSpawnProcess } from './launchProcess';
+import {
+	launchExecProcess,
+	launchSpawnProcess,
+	StatusResponse,
+} from './launchProcess';
 
 describe('launchProcess', () => {
 	describe('launchExecProcess', () => {
@@ -17,6 +21,14 @@ describe('launchProcess', () => {
 				code: 0,
 				stdout: 'stdout: Test',
 			});
+		});
+
+		it('Should return the correct error code with a given command and args', async () => {
+			try {
+				await launchSpawnProcess('pwd', ['--hello']);
+			} catch (e) {
+				expect((e as StatusResponse).code).toBe(1);
+			}
 		});
 	});
 });

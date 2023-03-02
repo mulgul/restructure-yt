@@ -23,7 +23,7 @@ enum StatusCode {
 	Failure = 1,
 }
 
-interface StatusResponse {
+export interface StatusResponse {
 	code: StatusCode;
 	stderr?: string;
 	stdout?: string;
