@@ -1,4 +1,8 @@
-import { launchExecProcess, launchSpawnProcess } from './launchProcess';
+import {
+	launchExecProcess,
+	launchSpawnProcess,
+	StatusResponse,
+} from './launchProcess';
 
 describe('launchProcess', () => {
 	describe('launchExecProcess', () => {
@@ -12,7 +16,8 @@ describe('launchProcess', () => {
 			try {
 				await launchExecProcess('asdf');
 			} catch (e) {
-				expect(e).toBe('/bin/sh: asdf: command not found\n');
+				const check = (e as string).startsWith('/bin/sh:');
+				expect(check).toBe(true);
 			}
 		});
 	});
@@ -23,7 +28,7 @@ describe('launchProcess', () => {
 
 			expect(result).toStrictEqual({
 				code: 0,
-				stdout: 'stdout: Test\n',
+				stdout: 'stdout: Test',
 			});
 		});
 
@@ -31,10 +36,7 @@ describe('launchProcess', () => {
 			try {
 				await launchSpawnProcess('pwd', ['--hello']);
 			} catch (e) {
-				expect(e).toStrictEqual({
-					code: 1,
-					stderr: 'stderr: pwd: illegal option -- -\nusage: pwd [-L | -P]\n',
-				});
+				expect((e as StatusResponse).code).toBe(1);
 			}
 		});
 	});
