@@ -23,7 +23,7 @@ describe('launchProcess', () => {
 
 			expect(result).toStrictEqual({
 				code: 0,
-				stdout: 'stdout: Test\n',
+				stdout: 'stdout: Test',
 			});
 		});
 
@@ -33,7 +33,7 @@ describe('launchProcess', () => {
 			} catch (e) {
 				expect(e).toStrictEqual({
 					code: 1,
-					stderr: 'stderr: pwd: illegal option -- -\nusage: pwd [-L | -P]\n',
+					stderr: 'stderr: pwd: illegal option -- -\nusage: pwd [-L | -P]',
 				});
 			}
 		});
