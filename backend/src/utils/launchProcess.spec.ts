@@ -11,6 +11,15 @@ describe('launchProcess', () => {
 
 			expect(result).toBe('Test\n');
 		});
+
+		it('Should error correctly when given a invalid command', async () => {
+			try {
+				await launchExecProcess('asdf');
+			} catch (e) {
+				const check = (e as string).startsWith('/bin/sh:')
+				expect(check).toBe(true);
+			}
+		});
 	});
 
 	describe('launchSpawnProcess', () => {
