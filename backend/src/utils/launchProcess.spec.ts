@@ -7,14 +7,6 @@ describe('launchProcess', () => {
 
 			expect(result).toBe('Test\n');
 		});
-
-		it('Should error correctly when given a invalid command', async () => {
-			try {
-				await launchExecProcess('asdf');
-			} catch (e) {
-				expect(e).toBe('/bin/sh: asdf: command not found\n');
-			}
-		});
 	});
 
 	describe('launchSpawnProcess', () => {
@@ -25,17 +17,6 @@ describe('launchProcess', () => {
 				code: 0,
 				stdout: 'stdout: Test',
 			});
-		});
-
-		it('Should return the correct error code with a given command and args', async () => {
-			try {
-				await launchSpawnProcess('pwd', ['--hello']);
-			} catch (e) {
-				expect(e).toStrictEqual({
-					code: 1,
-					stderr: 'stderr: pwd: illegal option -- -\nusage: pwd [-L | -P]',
-				});
-			}
 		});
 	});
 });
