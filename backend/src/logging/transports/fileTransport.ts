@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import appRoot from 'app-root-path';
 import { transports } from 'winston';
 

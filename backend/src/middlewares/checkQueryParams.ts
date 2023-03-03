@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { NextFunction, Request, Response } from 'express';
 import { BadRequest } from 'http-errors';
 

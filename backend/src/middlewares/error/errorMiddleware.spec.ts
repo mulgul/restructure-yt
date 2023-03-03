@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { BadRequest, InternalServerError } from 'http-errors';
 
 import { errorMiddleware } from './errorMiddleware';

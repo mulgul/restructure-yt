@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import express from 'express';
 import * as expressWinston from 'express-winston';
 import winston from 'winston';

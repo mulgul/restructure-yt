@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { SPLAT } from 'triple-beam';
 import { format } from 'util';
 import * as winston from 'winston';
