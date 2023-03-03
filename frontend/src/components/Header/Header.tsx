@@ -11,8 +11,8 @@ export const Header = () => {
 	return (
 		<div className="header-container">
 			<Title
-				title={'Restructure'}
-				subtitle={'Youtube to audio file converter'}
+				title={'estructure'}
+				subtitle={'Youtube to audio file downloader'}
 			></Title>
 		</div>
 	);
