@@ -14,7 +14,10 @@ interface TitleProp {
 export const Title = ({ title, subtitle }: TitleProp) => {
 	return (
 		<div className="title-container">
-			<h1 className="title-text"><img src="favicon.png" alt="" className='title-img'/>{title}</h1>
+			<h1 className="title-text">
+				<img src="favicon.png" alt="" className="title-img" />
+				{title}
+			</h1>
 			<h2 className="subtitle-text">{subtitle}</h2>
 		</div>
 	);
