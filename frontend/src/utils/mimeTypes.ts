@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 export const mimeTypes: Record<string, string> = {
 	a: 'application/octet-stream',
 	ai: 'application/postscript',

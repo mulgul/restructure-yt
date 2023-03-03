@@ -1,5 +1,10 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import * as React from 'react';
 import { useState } from 'react';
+
 import { fetchAudioDownload } from '../../calls/audioDownload';
 import { useDownloadFile } from '../../hooks/useDownloadFile';
 import { mimeTypes } from '../../utils/mimeTypes';

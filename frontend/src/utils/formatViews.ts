@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 export const formatViews = (views: number): string => {
 	if (views > 1000000) {
 		return Math.floor(views / 1000000).toString() + 'M';

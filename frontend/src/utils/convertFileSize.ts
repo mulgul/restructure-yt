@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 export const convertFileSize = (bytes: number, si = false, dp = 1): string => {
 	const thresh = si ? 1000 : 1024;
 
