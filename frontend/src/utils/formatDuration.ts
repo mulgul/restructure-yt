@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 export const formatDuration = (dur: number): string => {
 	const minutes = Math.floor(dur / 60);
 	const seconds = dur % 60;

@@ -1,5 +1,10 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import * as React from 'react';
 import { useState } from 'react';
+
 import { fetchAudioMetadata } from '../../calls/audioMetadata';
 import { IParsedMetadata } from '../../types/responses';
 import { Formats } from '../Formats';
