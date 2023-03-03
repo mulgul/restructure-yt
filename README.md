@@ -23,6 +23,15 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 3. `export LOG_LEVEL=http`
 4. `yarn build && yarn main` or `yarn dev` for development mode.
 
+## Running the Backend in Docker
+
+1. `cd backend`
+2. `docker build . -t <your username>/restructure-yt`
+3. `docker run -p 49160:8080 -d <your username>/restructure-yt`
+4. `docker ps # Get your container ID`
+5. `docker logs <container id> # Get container logs`
+6. `curl -i localhost:49160`
+
 ### Logging
 
 - `LOG_LEVEL`: The lowest priority log level to surface, defaults to `info`. Tip: set to `http`
