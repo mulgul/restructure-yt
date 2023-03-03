@@ -1,3 +1,9 @@
+.title-img{
+    height: 8vh;
+    position: relative;
+    top: 2.25vh;
+}
+
 .title-text {
     font-weight: 600;
     font-size: 5vh;
@@ -8,5 +14,5 @@
     font-weight: 500;
     font-size: 2vh;
     color: #f9f9f9;
-    margin-top: 1vh;
+    margin-top: 3vh;
 }

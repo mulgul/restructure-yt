@@ -2,7 +2,13 @@
     background: url('../public/blue-diagonal-ai.png');
     background-position: -300px -500px;
     background-repeat: no-repeat;
+    /* height: 100%;
+    min-height: 100vh;
+    overflow: hidden; */
+}
+
+.parent-wrapper{
     height: 100%;
     min-height: 100vh;
-    overflow: auto;
+    overflow: hidden;
 }
