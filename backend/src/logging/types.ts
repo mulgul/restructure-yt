@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 /**
  * The logform package exports `TransformableInfo` but it sets the
  * message type to `any`. Here we take that exact type and recreate it

@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { Request } from 'express';
 import { ParamsDictionary, Query } from 'express-serve-static-core';
 

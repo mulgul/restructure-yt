@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { exec, spawn } from 'child_process';
 
 import { Log } from '../logging/Log';

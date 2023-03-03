@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 import { format } from 'winston';
 
 import { ISanitizedData, ITransformableInfo } from '../types';

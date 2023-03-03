@@ -1,3 +1,7 @@
+// MIT License
+//
+// Copyright (c) 2023 github.com/mulgul
+
 interface IFragments {
 	path: string;
 	duration: number;
