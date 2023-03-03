@@ -38,9 +38,7 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 - `LOG_LEVEL`: The lowest priority log level to surface, defaults to `info`. Tip: set to `http`
     to see all HTTP requests.
 - `LOG_JSON`:Whether or not to have logs formatted as JSON, defaults to `false`.
-    Useful when using `stdout` to programmatically process Sidecar log data.
-- `LOG_STRIP_ANSI`: Whether or not to strip ANSI characters from logs, defaults
-    to `false`. Useful when logging RPC calls with JSON written to transports.
+    Useful when using `stdout` to programmatically process log data.
 
 ## Running the Frontend
 

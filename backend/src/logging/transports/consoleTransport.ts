@@ -5,12 +5,7 @@
 import dotenv from 'dotenv';
 import { format, transports } from 'winston';
 
-import {
-	nodeUtilFormat,
-	stripAnsi,
-	stripTimestamp,
-	timeStamp,
-} from '../transformers';
+import { nodeUtilFormat, stripTimestamp, timeStamp } from '../transformers';
 import { ITransformableInfo } from '../types';
 
 dotenv.config();
@@ -37,10 +32,6 @@ export function consoleTransport(): transports.ConsoleTransportInstance {
 		transformers.push(format.colorize(), simplePrint);
 	} else {
 		transformers.push(format.prettyPrint());
-	}
-
-	if (process.env.LOG_STRIP_ANSI) {
-		transformers.unshift(stripAnsi());
 	}
 
 	return new transports.Console({
