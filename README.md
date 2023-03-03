@@ -28,9 +28,10 @@ This repository uses `yarn berry`, which means you need both `npm` and `yarn` do
 1. `cd backend`
 2. `docker build . -t <your username>/restructure-yt`
 3. `docker run -p 49160:8080 -d <your username>/restructure-yt`
-4. `docker ps # Get your container ID`
-5. `docker logs <container id> # Get container logs`
+4. `docker ps` # Get your container ID
+5. `docker logs <container id>` # Get container logs
 6. `curl -i localhost:49160`
+7. `docker exec -it --user=root <container_id> /bin/ash` # Running as root user
 
 ### Logging
 
