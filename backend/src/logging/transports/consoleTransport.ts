@@ -5,12 +5,7 @@
 import dotenv from 'dotenv';
 import { format, transports } from 'winston';
 
-import {
-	nodeUtilFormat,
-	stripAnsi,
-	stripTimestamp,
-	timeStamp,
-} from '../transformers';
+import { nodeUtilFormat, stripTimestamp, timeStamp } from '../transformers';
 import { ITransformableInfo } from '../types';
 
 dotenv.config();
