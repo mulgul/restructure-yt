@@ -39,10 +39,6 @@ export function consoleTransport(): transports.ConsoleTransportInstance {
 		transformers.push(format.prettyPrint());
 	}
 
-	if (process.env.LOG_STRIP_ANSI) {
-		transformers.unshift(stripAnsi());
-	}
-
 	return new transports.Console({
 		level: process.env.LOG_LEVEL || 'info',
 		handleExceptions: true,
