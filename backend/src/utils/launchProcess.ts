@@ -5,6 +5,7 @@
 import { exec, spawn } from 'child_process';
 
 import { Log } from '../logging/Log';
+import { stripData } from './stripData';
 
 /**
  * Run child process EXEC. This will always return a string, whether rejected or resolved.
@@ -68,8 +69,4 @@ export const launchSpawnProcessPromise = async (
 			}
 		});
 	});
-};
-
-const stripData = (data: Buffer) => {
-	return data.toString('utf-8').trim();
 };
