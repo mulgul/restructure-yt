@@ -51,7 +51,8 @@ router.get(
  * GET: Download the audio for a video. There is no event-streaming or tracking of the
  * download with this endpoint. It will downlaod the audio to disk, and then send the file.
  *
- * If you want to download the audio and track the download, you can use `/download/event`
+ * If you want to download the audio and track the download, you can use `/download/event` in conjunction
+ * with `/download/retrieve`.
  */
 router.get(
 	'/download',
@@ -122,7 +123,7 @@ router.get(
 		res.writeHead(200, headers);
 
 		proc.stdout.on('data', (data) => {
-			Log.logger.info(`stdout: ${stripData(data)}`);
+			logger.info(`stdout: ${stripData(data)}`);
 
 			const str = data.toString();
 			if (str.includes('ETA') || str.includes('100% of')) {
@@ -131,12 +132,12 @@ router.get(
 		});
 
 		proc.on('close', (code) => {
-			Log.logger.info(`Closing child process with status code: ${code}`);
+			logger.info(`Closing child process with status code: ${code}`);
 			res.end();
 		});
 
 		proc.stderr.on('data', (data) => {
-			Log.logger.error(`stderr: ${stripData(data)}`);
+			logger.error(`stderr: ${stripData(data)}`);
 			res.end();
 		});
 	}
