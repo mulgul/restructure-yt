@@ -24,6 +24,9 @@ import {
 const router = express.Router();
 const { logger } = Log;
 
+/**
+ * GET: Retrieve audio metadata for a given video.
+ */
 router.get(
 	'/metadata',
 	checkQueryParams('encodedURI'),
@@ -44,6 +47,12 @@ router.get(
 	}
 );
 
+/**
+ * GET: Download the audio for a video. There is no event-streaming or tracking of the
+ * download with this endpoint. It will downlaod the audio to disk, and then send the file.
+ *
+ * If you want to download the audio and track the download, you can use `/download/event`
+ */
 router.get(
 	'/download',
 	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
@@ -85,6 +94,11 @@ router.get(
 	}
 );
 
+/**
+ * GET: Track a given download by event-stream. This will send the most recent information
+ * for a download. This will download the file to disk, but not send the file. Use this
+ * in conjunction with `/download/retrieve` in order to obtain the audio file.
+ */
 router.get(
 	'/download/event',
 	checkQueryParams('encodedURI', 'title', 'formatId', 'ext'),
@@ -108,24 +122,56 @@ router.get(
 		res.writeHead(200, headers);
 
 		proc.stdout.on('data', (data) => {
-			console.log('TYPEOF: ', typeof data);
 			Log.logger.info(`stdout: ${stripData(data)}`);
 
 			const str = data.toString();
-
 			if (str.includes('ETA') || str.includes('100% of')) {
-				res.write('data: ' + data.toString() + '\n\n');
+				res.write('data: ' + str + '\n\n');
 			}
 		});
 
-		proc.on('close', function (code) {
-			console.log(code);
+		proc.on('close', (code) => {
+			Log.logger.info(`Closing child process with status code: ${code}`);
 			res.end();
 		});
 
-		proc.stderr.on('data', function (data) {
-			Log.logger.info(`stderr: ${stripData(data)}`);
+		proc.stderr.on('data', (data) => {
+			Log.logger.error(`stderr: ${stripData(data)}`);
 			res.end();
+		});
+	}
+);
+
+/**
+ * GET: Retrieve a file that was downloaded via `/download/event`. Delete the file
+ * once it is sent.
+ */
+router.get(
+	'/download/retrieve',
+	checkQueryParams('title', 'ext'),
+	async function (
+		req: IGetRequestHandler<IAudioDownloadQueryParams>,
+		res,
+		next
+	) {
+		const { title, ext } = req.query;
+		const fileName = createFileName(title);
+		const options = {
+			root: path.join(__dirname, '../downloads'),
+		};
+		const filePath = options.root + `/${fileName}.${ext}`;
+
+		res.sendFile(`${fileName}.${ext}`, options, (err) => {
+			if (err) {
+				next(err);
+			}
+
+			fs.unlink(filePath, (err) => {
+				if (err) {
+					logger.error(err);
+				}
+				logger.info(`File Path: ${filePath} DELETED`);
+			});
 		});
 	}
 );
