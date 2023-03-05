@@ -2,7 +2,7 @@
 //
 // Copyright (c) 2023 github.com/mulgul
 
-import { launchSpawnProcess } from '../../utils/launchProcess';
+import { launchSpawnProcessPromise } from '../../utils/launchProcess';
 
 /**
  * This will launch a spawn child process in order to download the requested link.
@@ -18,7 +18,7 @@ export const fetchAudioDownload = async (
 	writePath: string,
 	decodedURI: string
 ) => {
-	const proc = await launchSpawnProcess('yt-dlp', [
+	const proc = await launchSpawnProcessPromise('yt-dlp', [
 		'-i',
 		'-f',
 		formatId,

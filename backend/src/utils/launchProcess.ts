@@ -5,13 +5,16 @@
 import { exec, spawn } from 'child_process';
 
 import { Log } from '../logging/Log';
+import { stripData } from './stripData';
 
 /**
  * Run child process EXEC. This will always return a string, whether rejected or resolved.
  *
  * @param cmd Command to execute
  */
-export const launchExecProcess = async (cmd: string): Promise<string> => {
+export const launchExecProcessPromise = async (
+	cmd: string
+): Promise<string> => {
 	return new Promise((resolve, reject) => {
 		exec(cmd, (error, stdout, stderr) => {
 			if (error) {
@@ -33,7 +36,10 @@ export interface StatusResponse {
 	stdout?: string;
 }
 
-export const launchSpawnProcess = async (cmd: string, args: string[]) => {
+export const launchSpawnProcessPromise = async (
+	cmd: string,
+	args: string[]
+) => {
 	return new Promise<StatusResponse>((resolve, reject) => {
 		const proc = spawn(cmd, args, { detached: true });
 		const stdout: string[] = [];
@@ -63,8 +69,4 @@ export const launchSpawnProcess = async (cmd: string, args: string[]) => {
 			}
 		});
 	});
-};
-
-const stripData = (data: Buffer) => {
-	return data.toString('utf-8').trim();
 };
