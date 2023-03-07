@@ -28,9 +28,11 @@ export const UrlInput = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
-		const URLFormValue = document.getElementsByClassName('url-form')[0].getAttribute("value");
+		const URLFormValue = document
+			.getElementsByClassName('url-form')[0]
+			.getAttribute('value');
 		// TODO: card template for when the formats is loading.
-		if(validateYoutubeUrl(URLFormValue)){
+		if (validateYoutubeUrl(URLFormValue)) {
 			setIsLoading(true);
 			const data = await fetchAudioMetadata(encodeURIComponent(url));
 			setIsLoading(false);
