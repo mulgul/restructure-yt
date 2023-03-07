@@ -4,9 +4,10 @@
 
 export const request = async <T>(
 	path: string,
-	type: string,
+	type: 'json' | 'blob' | 'stream',
 	options = {}
 ): Promise<T> => {
+	console.log('type: ', type);
 	return fetch(path, options)
 		.then((res) => {
 			if (!res.ok) {
@@ -15,6 +16,12 @@ export const request = async <T>(
 
 			if (type === 'blob') {
 				return res.blob();
+			}
+
+			if (type === 'stream') {
+				// For event-streams just return the Response,
+				// since multiple keys are needed under the Response type.
+				return res;
 			}
 
 			return res.json();

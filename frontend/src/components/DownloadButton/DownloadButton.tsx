@@ -6,6 +6,7 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import { fetchAudioDownload } from '../../calls/audioDownload';
+import { fetchAudioDownloadEvent } from '../../calls/audioDownloadEvent';
 import { useDownloadFile } from '../../hooks/useDownloadFile';
 import { mimeTypes } from '../../utils/mimeTypes';
 import { BsDownload } from 'react-icons/bs';
@@ -34,6 +35,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	const { Primary, Loading } = ButtonState;
 	const [btnState, setbBtnState] = useState(Primary);
 	const [showAlert, setShowAlert] = useState<boolean>(false);
+	const [downloadPercent, setDownloadPercent] = useState<string>('');
 	const preDownloading = () => setbBtnState(Loading);
 	const postDownloading = () => setbBtnState(Primary);
 
@@ -54,7 +56,11 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		title: string,
 		ext: string,
 		id: string
-	) => {
+	): Promise<Blob> => {
+		const done = true;
+		if (done) {
+			throw Error('This is thrown')
+		}
 		try {
 			return await fetchAudioDownload(encodeURIComponent(url), title, ext, id);
 		} catch (e) {
@@ -62,13 +68,26 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		}
 	};
 
+	const downloadEvent = async (
+		title: string,
+		ext: string
+	): Promise<Response> => {
+		return await fetchAudioDownloadEvent(encodeURIComponent(url), title, ext, id);;
+	};
+
 	const { ref, fileUrl, download, name } = useDownloadFile({
 		apiDefinition: async () => await downloadFile(url, title, ext, id),
+		apiEventDefinition: async () => await downloadEvent(title, ext),
+		setDownloadPercent,
 		preDownloading,
 		postDownloading,
 		onError: onErrorDownloadFile,
 		getFileName,
 		contentType: mimeTypes[ext],
+		title,
+		ext,
+		encodedURI: encodeURIComponent(url),
+		id,
 	});
 
 	return (
@@ -83,6 +102,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 				)}
 				{btnState === Primary && <BsDownload className="button-icon" />}
 			</button>
+			<div>{downloadPercent}</div>
 		</div>
 	);
 };
