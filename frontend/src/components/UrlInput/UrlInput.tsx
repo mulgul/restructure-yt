@@ -28,12 +28,16 @@ export const UrlInput = () => {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault();
-
+		const URLFormValue = document
+			.getElementsByClassName('url-form')[0]
+			.getAttribute('value');
 		// TODO: card template for when the formats is loading.
-		setIsLoading(true);
-		const data = await fetchAudioMetadata(encodeURIComponent(url));
-		setIsLoading(false);
-		setMeta(data);
+		if (validateYoutubeUrl(URLFormValue)) {
+			setIsLoading(true);
+			const data = await fetchAudioMetadata(encodeURIComponent(url));
+			setIsLoading(false);
+			setMeta(data);
+		}
 	};
 
 	const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
