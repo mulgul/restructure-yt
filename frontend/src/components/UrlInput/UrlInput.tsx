@@ -60,7 +60,7 @@ export const UrlInput = () => {
 					className="url-form"
 					type="url"
 					value={url}
-					placeholder="Enter a URL for available formats"
+					placeholder="Enter a URL to see available formats"
 					onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange(e)}
 				/>
 				<button className="url-button" onClick={(e) => handleSubmit(e)}>
