@@ -135,7 +135,7 @@ router.get(
 			};
 
 			const str = stripData(data);
-			
+
 			if (str.includes('ETA')) {
 				const { percent, eta } = stripDownloadData(str);
 				eventPayload.percent = percent;

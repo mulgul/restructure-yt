@@ -35,8 +35,8 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	const { Primary, Loading } = ButtonState;
 	const [btnState, setbBtnState] = useState(Primary);
 	const [showAlert, setShowAlert] = useState<boolean>(false);
-	const [downloadPercent, setDownloadPercent] = useState<string>()
-	const [isCompleted, setIsCompleted] = useState<boolean>(false)
+	const [downloadPercent, setDownloadPercent] = useState<string>();
+	const [isCompleted, setIsCompleted] = useState<boolean>(false);
 	const downloadRef = useRef<string>();
 	const preDownloading = () => setbBtnState(Loading);
 	const postDownloading = () => setbBtnState(Primary);
@@ -75,23 +75,28 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		contentType: mimeTypes[ext],
 	});
 
-	useEffect(()=> {
-		downloadRef.current = downloadPercent
-		console.log(downloadPercent, "DOWNLOAD PERCENT IN USE EFFECT DOWNLOAD BUTTON")
-	}, [downloadPercent])
+	useEffect(() => {
+		downloadRef.current = downloadPercent;
+		console.log(
+			downloadPercent,
+			'DOWNLOAD PERCENT IN USE EFFECT DOWNLOAD BUTTON'
+		);
+	}, [downloadPercent]);
 
 	const triggerEvent = () => {
-		let eventSource = new EventSource('http://127.0.0.1:8080/audio/download/event?encodedURI=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dxuc9C-C6Ldw&ext=m4a&title=FKJ%20Live%20at%20La%20F%C3%A9e%20Electricit%C3%A9%2C%20Paris&formatId=140')
-		eventSource.onmessage = e => {
-			const payload = JSON.parse(e.data) as IEventPayload
-			setDownloadPercent(payload.percent)
-			if (payload.status === 'completed'){
-				setIsCompleted(true)
-				eventSource.close()
-				download()
+		const eventSource = new EventSource(
+			'http://127.0.0.1:8080/audio/download/event?encodedURI=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dxuc9C-C6Ldw&ext=m4a&title=FKJ%20Live%20at%20La%20F%C3%A9e%20Electricit%C3%A9%2C%20Paris&formatId=140'
+		);
+		eventSource.onmessage = (e) => {
+			const payload = JSON.parse(e.data) as IEventPayload;
+			setDownloadPercent(payload.percent);
+			if (payload.status === 'completed') {
+				setIsCompleted(true);
+				eventSource.close();
+				download();
 			}
-		}
-	}
+		};
+	};
 
 	return (
 		<div className="button-container">

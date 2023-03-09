@@ -5,10 +5,7 @@
 import { request } from './request';
 import { mimeTypes } from '../utils/mimeTypes';
 
-export const fetchAudioDownloadRetrieve = (
-	title: string,
-	ext: string,
-) => {
+export const fetchAudioDownloadRetrieve = (title: string, ext: string) => {
 	const path = `/audio/download/retrieve?ext=${ext}&title=${title}`;
 	const contentType = mimeTypes[ext];
 	return request<Blob>(path, 'blob', {
