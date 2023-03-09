@@ -18,6 +18,7 @@ import { stripData } from '../utils/stripData';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
+	IEventPayload,
 	IGetRequestHandler,
 } from './types';
 
@@ -118,6 +119,7 @@ router.get(
 			'Content-Type': 'text/event-stream',
 			Connection: 'keep-alive',
 			'Cache-Control': 'no-cache',
+			'Access-Control-Allow-Origin': '*',
 		};
 
 		res.writeHead(200, headers);
@@ -125,9 +127,20 @@ router.get(
 		proc.stdout.on('data', (data) => {
 			logger.info(`stdout: ${stripData(data)}`);
 
-			const str = data.toString();
-			if (str.includes('ETA') || str.includes('100% of')) {
+			const eventPayload: IEventPayload = {
+				status: 'downloading',
+				percent: '',
+				eta: '',
+			};
+
+			const str = stripData(data);
+
+			if (str.includes('ETA')) {
 				res.write('data: ' + str + '\n\n');
+			} else if (str.includes('100% of')) {
+				eventPayload.status = 'completed';
+				res.write('data: ' + str + '\n\n');
+				res.end();
 			}
 		});
 

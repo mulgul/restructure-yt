@@ -21,3 +21,9 @@ export interface IAudioDownloadQueryParams extends IAudioInfoQueryParams {
 	title: string;
 	ext: string;
 }
+
+export interface IEventPayload {
+	status: string;
+	percent: string;
+	eta: string;
+}
