@@ -15,6 +15,7 @@ import { IParsedMetadata } from '../services/audio/types';
 import { createFileName } from '../utils/createFileName';
 import { launchExecProcessPromise } from '../utils/launchProcess';
 import { stripData } from '../utils/stripData';
+import { stripDownloadData } from '../utils/stripDownloadData';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
@@ -134,12 +135,15 @@ router.get(
 			};
 
 			const str = stripData(data);
-
+			
 			if (str.includes('ETA')) {
-				res.write('data: ' + str + '\n\n');
+				const { percent, eta } = stripDownloadData(str);
+				eventPayload.percent = percent;
+				eventPayload.eta = eta;
+				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			} else if (str.includes('100% of')) {
 				eventPayload.status = 'completed';
-				res.write('data: ' + str + '\n\n');
+				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 				res.end();
 			}
 		});
