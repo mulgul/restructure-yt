@@ -3,6 +3,7 @@
 // Copyright (c) 2023 github.com/mulgul
 
 import * as React from 'react';
+import { useState } from 'react';
 
 import { IFormat } from '../../types/responses';
 import { convertFileSize } from '../../utils/convertFileSize';
@@ -24,8 +25,11 @@ export const FormatCard = ({
 	title,
 	url,
 }: IFormatCardProps) => {
+
+	const [downloadPercent, setDownloadPercent] = useState<string>();
+
 	return (
-		<div className="format-card-container">
+		<div className="format-card-container" style={{background: `linear-gradient(90deg, #f9f9f9 50%, #8c35ff 50%)`}}>
 			<div className="format-codec">
 				<p className="format-p">File Type: {format.audio_ext}</p>
 			</div>
@@ -37,7 +41,7 @@ export const FormatCard = ({
 					File Size: {convertFileSize(format.filesize, true)}
 				</p>
 			</div>
-			<DownloadButton ext={ext} title={title} url={url} id={id} />
+			<DownloadButton ext={ext} title={title} url={url} id={id} downloadPercent={downloadPercent} setDownloadPercent={setDownloadPercent} />
 		</div>
 	);
 };

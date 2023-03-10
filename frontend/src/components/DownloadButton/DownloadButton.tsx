@@ -24,6 +24,8 @@ interface IDownloadProps {
 	title: string;
 	url: string;
 	id: string;
+	downloadPercent: string;
+	setDownloadPercent: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const DownloadButton: React.FC<IDownloadProps> = ({
@@ -31,11 +33,12 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	title,
 	url,
 	id,
+	downloadPercent,
+	setDownloadPercent
 }) => {
 	const { Primary, Loading } = ButtonState;
 	const [btnState, setbBtnState] = useState(Primary);
 	const [showAlert, setShowAlert] = useState<boolean>(false);
-	const [downloadPercent, setDownloadPercent] = useState<string>();
 	const downloadRef = useRef<string>();
 	const preDownloading = () => setbBtnState(Loading);
 	const postDownloading = () => setbBtnState(Primary);
