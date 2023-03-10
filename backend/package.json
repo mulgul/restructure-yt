@@ -10,7 +10,7 @@
     "inspect": "node --inspect=127.0.0.1:8081 ./build/main.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "yarn lint --fix",
-    "test": "NODE_ENV=test jest --detectOpenHandles --silent"
+    "test": "NODE_ENV=test jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "",

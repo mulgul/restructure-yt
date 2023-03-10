@@ -42,3 +42,9 @@ interface IFragments {
 	path: string;
 	duration: number;
 }
+
+export interface IEventPayload {
+	status: string;
+	percent: string;
+	eta: string;
+}

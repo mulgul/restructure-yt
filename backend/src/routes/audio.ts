@@ -15,9 +15,11 @@ import { IParsedMetadata } from '../services/audio/types';
 import { createFileName } from '../utils/createFileName';
 import { launchExecProcessPromise } from '../utils/launchProcess';
 import { stripData } from '../utils/stripData';
+import { stripDownloadData } from '../utils/stripDownloadData';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
+	IEventPayload,
 	IGetRequestHandler,
 } from './types';
 
@@ -118,6 +120,13 @@ router.get(
 			'Content-Type': 'text/event-stream',
 			Connection: 'keep-alive',
 			'Cache-Control': 'no-cache',
+			'Access-Control-Allow-Origin': '*',
+		};
+
+		const eventPayload: IEventPayload = {
+			status: 'downloading',
+			percent: '',
+			eta: '',
 		};
 
 		res.writeHead(200, headers);
@@ -125,14 +134,20 @@ router.get(
 		proc.stdout.on('data', (data) => {
 			logger.info(`stdout: ${stripData(data)}`);
 
-			const str = data.toString();
-			if (str.includes('ETA') || str.includes('100% of')) {
-				res.write('data: ' + str + '\n\n');
+			const str = stripData(data);
+
+			if (str.includes('ETA')) {
+				const { percent, eta } = stripDownloadData(str);
+				eventPayload.percent = percent;
+				eventPayload.eta = eta;
+				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			}
 		});
 
 		proc.on('close', (code) => {
 			logger.info(`Closing child process with status code: ${code}`);
+			eventPayload.status = 'completed';
+			res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			res.end();
 		});
 
