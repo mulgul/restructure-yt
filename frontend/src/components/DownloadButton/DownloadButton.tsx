@@ -36,7 +36,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	const [btnState, setbBtnState] = useState(Primary);
 	const [showAlert, setShowAlert] = useState<boolean>(false);
 	const [downloadPercent, setDownloadPercent] = useState<string>();
-	const [isCompleted, setIsCompleted] = useState<boolean>(false);
 	const downloadRef = useRef<string>();
 	const preDownloading = () => setbBtnState(Loading);
 	const postDownloading = () => setbBtnState(Primary);
@@ -53,12 +52,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		return `${title.split(' ').join('-')}.${ext}`;
 	};
 
-	const downloadFile = async (
-		url: string,
-		title: string,
-		ext: string,
-		id: string
-	) => {
+	const downloadFile = async (title: string, ext: string) => {
 		try {
 			return await fetchAudioDownloadRetrieve(title, ext);
 		} catch (e) {
@@ -67,7 +61,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	};
 
 	const { ref, fileUrl, download, name } = useDownloadFile({
-		apiDefinition: async () => await downloadFile(url, title, ext, id),
+		apiDefinition: async () => await downloadFile(title, ext),
 		preDownloading,
 		postDownloading,
 		onError: onErrorDownloadFile,
@@ -93,10 +87,10 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 			const payload = JSON.parse(e.data) as IEventPayload;
 			setDownloadPercent(payload.percent);
 			if (payload.status === 'completed') {
-				setIsCompleted(true);
 				eventSource.close();
-				const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-				await delay(5000)
+				const delay = (ms: number) =>
+					new Promise((resolve) => setTimeout(resolve, ms));
+				await delay(5000);
 				download();
 			}
 		};

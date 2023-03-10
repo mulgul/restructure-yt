@@ -143,7 +143,7 @@ router.get(
 				eventPayload.eta = eta;
 				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			} else if (str.includes('100% of')) {
-				waitAndFindFile(writePath)
+				waitAndFindFile(writePath);
 				eventPayload.status = 'completed';
 				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 				res.end();
