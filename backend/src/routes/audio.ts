@@ -16,6 +16,7 @@ import { createFileName } from '../utils/createFileName';
 import { launchExecProcessPromise } from '../utils/launchProcess';
 import { stripData } from '../utils/stripData';
 import { stripDownloadData } from '../utils/stripDownloadData';
+import { waitAndFindFile } from '../utils/waitAndFindFile';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
@@ -142,6 +143,7 @@ router.get(
 				eventPayload.eta = eta;
 				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			} else if (str.includes('100% of')) {
+				waitAndFindFile(writePath)
 				eventPayload.status = 'completed';
 				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 				res.end();

@@ -85,14 +85,18 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 
 	const triggerEvent = () => {
 		const eventSource = new EventSource(
-			'http://127.0.0.1:8080/audio/download/event?encodedURI=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dxuc9C-C6Ldw&ext=m4a&title=FKJ%20Live%20at%20La%20F%C3%A9e%20Electricit%C3%A9%2C%20Paris&formatId=140'
+			`http://127.0.0.1:8080/audio/download/event?encodedURI=${encodeURI(
+				url
+			)}&ext=${ext}&title=${title}&formatId=${id}`
 		);
-		eventSource.onmessage = (e) => {
+		eventSource.onmessage = async (e) => {
 			const payload = JSON.parse(e.data) as IEventPayload;
 			setDownloadPercent(payload.percent);
 			if (payload.status === 'completed') {
 				setIsCompleted(true);
 				eventSource.close();
+				const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+				await delay(5000)
 				download();
 			}
 		};
