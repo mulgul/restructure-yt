@@ -71,10 +71,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 
 	useEffect(() => {
 		downloadRef.current = downloadPercent;
-		console.log(
-			downloadPercent,
-			'DOWNLOAD PERCENT IN USE EFFECT DOWNLOAD BUTTON'
-		);
 	}, [downloadPercent]);
 
 	const triggerEvent = () => {
@@ -88,9 +84,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 			setDownloadPercent(payload.percent);
 			if (payload.status === 'completed') {
 				eventSource.close();
-				const delay = (ms: number) =>
-					new Promise((resolve) => setTimeout(resolve, ms));
-				await delay(5000);
 				download();
 			}
 		};

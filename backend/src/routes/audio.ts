@@ -16,7 +16,6 @@ import { createFileName } from '../utils/createFileName';
 import { launchExecProcessPromise } from '../utils/launchProcess';
 import { stripData } from '../utils/stripData';
 import { stripDownloadData } from '../utils/stripDownloadData';
-import { waitAndFindFile } from '../utils/waitAndFindFile';
 import {
 	IAudioDownloadQueryParams,
 	IAudioInfoQueryParams,
@@ -124,16 +123,16 @@ router.get(
 			'Access-Control-Allow-Origin': '*',
 		};
 
+		const eventPayload: IEventPayload = {
+			status: 'downloading',
+			percent: '',
+			eta: '',
+		};
+
 		res.writeHead(200, headers);
 
 		proc.stdout.on('data', (data) => {
 			logger.info(`stdout: ${stripData(data)}`);
-
-			const eventPayload: IEventPayload = {
-				status: 'downloading',
-				percent: '',
-				eta: '',
-			};
 
 			const str = stripData(data);
 
@@ -142,16 +141,13 @@ router.get(
 				eventPayload.percent = percent;
 				eventPayload.eta = eta;
 				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
-			} else if (str.includes('100% of')) {
-				waitAndFindFile(writePath);
-				eventPayload.status = 'completed';
-				res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
-				res.end();
 			}
 		});
 
 		proc.on('close', (code) => {
 			logger.info(`Closing child process with status code: ${code}`);
+			eventPayload.status = 'completed';
+			res.write('data: ' + JSON.stringify(eventPayload) + '\n\n');
 			res.end();
 		});
 
