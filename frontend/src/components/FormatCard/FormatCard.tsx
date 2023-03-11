@@ -3,6 +3,7 @@
 // Copyright (c) 2023 github.com/mulgul
 
 import * as React from 'react';
+import { useState } from 'react';
 
 import { IFormat } from '../../types/responses';
 import { convertFileSize } from '../../utils/convertFileSize';
@@ -15,6 +16,8 @@ interface IFormatCardProps {
 	id: string;
 	title: string;
 	url: string;
+	downloadPercent: string;
+	setDownloadPercent: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const FormatCard = ({
@@ -23,9 +26,18 @@ export const FormatCard = ({
 	id,
 	title,
 	url,
+	setDownloadPercent,
 }: IFormatCardProps) => {
+	const [downloadBarPercent, setDownloadBarPercent] = useState<string>('');
+	const downloadNum = parseInt(downloadBarPercent);
+
 	return (
-		<div className="format-card-container">
+		<div
+			className="format-card-container"
+			style={{
+				background: `linear-gradient(90deg, #8c35ff ${downloadNum}%, #f9f9f9 ${downloadNum}%)`,
+			}}
+		>
 			<div className="format-codec">
 				<p className="format-p">File Type: {format.audio_ext}</p>
 			</div>
@@ -37,7 +49,15 @@ export const FormatCard = ({
 					File Size: {convertFileSize(format.filesize, true)}
 				</p>
 			</div>
-			<DownloadButton ext={ext} title={title} url={url} id={id} />
+			<DownloadButton
+				ext={ext}
+				title={title}
+				url={url}
+				id={id}
+				setDownloadPercent={setDownloadPercent}
+				downloadBarPercent={downloadBarPercent}
+				setDownloadBarPercent={setDownloadBarPercent}
+			/>
 		</div>
 	);
 };

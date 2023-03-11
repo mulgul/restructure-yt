@@ -3,6 +3,7 @@
 // Copyright (c) 2023 github.com/mulgul
 
 import * as React from 'react';
+import { useState } from 'react';
 
 import { FormatCard } from '../FormatCard';
 import { IFormat, IParsedMetadata } from '../../types/responses';
@@ -14,6 +15,7 @@ interface IMetadataProp {
 }
 
 export const Formats = ({ meta, url }: IMetadataProp) => {
+	const [downloadPercent, setDownloadPercent] = useState<string>('0');
 	if (Object.keys(meta).length === 0) return <div></div>;
 
 	const filterFormats = (formats: IFormat[]) => {
@@ -50,7 +52,12 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 	return (
 		<div className="formats-container">
 			<div className="formats-title">
-				<h2>Downloadable Formats</h2>
+				<h2>Downloadable Formats:</h2>
+				{parseInt(downloadPercent) != 0 ? (
+					<p className="download-percent">{downloadPercent}%</p>
+				) : (
+					<p></p>
+				)}
 			</div>
 			<div className="format-cards-parent">
 				{filterFormats(meta.formats).map((format) => (
@@ -61,6 +68,8 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 						title={meta.title}
 						url={url}
 						key={format.format_id}
+						downloadPercent={downloadPercent}
+						setDownloadPercent={setDownloadPercent}
 					/>
 				))}
 			</div>
