@@ -24,8 +24,9 @@ interface IDownloadProps {
 	title: string;
 	url: string;
 	id: string;
-	downloadPercent: string;
 	setDownloadPercent: React.Dispatch<React.SetStateAction<string>>;
+	downloadBarPercent: string;
+	setDownloadBarPercent: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const DownloadButton: React.FC<IDownloadProps> = ({
@@ -33,8 +34,9 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	title,
 	url,
 	id,
-	downloadPercent,
-	setDownloadPercent
+	setDownloadPercent,
+	downloadBarPercent,
+	setDownloadBarPercent,
 }) => {
 	const { Primary, Loading } = ButtonState;
 	const [btnState, setbBtnState] = useState(Primary);
@@ -73,8 +75,8 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 	});
 
 	useEffect(() => {
-		downloadRef.current = downloadPercent;
-	}, [downloadPercent]);
+		downloadRef.current = downloadBarPercent;
+	}, [downloadBarPercent]);
 
 	const triggerEvent = () => {
 		const eventSource = new EventSource(
@@ -85,6 +87,7 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 		eventSource.onmessage = async (e) => {
 			const payload = JSON.parse(e.data) as IEventPayload;
 			setDownloadPercent(payload.percent);
+			setDownloadBarPercent(payload.percent);
 			if (payload.status === 'completed') {
 				eventSource.close();
 				download();
@@ -104,7 +107,6 @@ export const DownloadButton: React.FC<IDownloadProps> = ({
 				)}
 				{btnState === Primary && <BsDownload className="button-icon" />}
 			</button>
-			<p>{downloadPercent}%</p>
 		</div>
 	);
 };
