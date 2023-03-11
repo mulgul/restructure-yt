@@ -26,14 +26,19 @@ export const FormatCard = ({
 	id,
 	title,
 	url,
-	setDownloadPercent
+	setDownloadPercent,
 }: IFormatCardProps) => {
-	const [downloadBarPercent, setDownloadBarPercent] = useState<string>('')
-	let downloadNum = parseInt(downloadBarPercent)
-	console.log(downloadNum, "DOWNLOAD NUM")
+	const [downloadBarPercent, setDownloadBarPercent] = useState<string>('');
+	const downloadNum = parseInt(downloadBarPercent);
+	console.log(downloadNum, 'DOWNLOAD NUM');
 
 	return (
-		<div className="format-card-container" style={{background: `linear-gradient(90deg, #8c35ff ${downloadNum}%, #f9f9f9 ${downloadNum}%)`}}>
+		<div
+			className="format-card-container"
+			style={{
+				background: `linear-gradient(90deg, #8c35ff ${downloadNum}%, #f9f9f9 ${downloadNum}%)`,
+			}}
+		>
 			<div className="format-codec">
 				<p className="format-p">File Type: {format.audio_ext}</p>
 			</div>
@@ -45,14 +50,15 @@ export const FormatCard = ({
 					File Size: {convertFileSize(format.filesize, true)}
 				</p>
 			</div>
-			<DownloadButton 
-				ext={ext} 
-				title={title} 
-				url={url} 
-				id={id} 
-				setDownloadPercent={setDownloadPercent} 
-				downloadBarPercent={downloadBarPercent} 
-				setDownloadBarPercent={setDownloadBarPercent}/>
+			<DownloadButton
+				ext={ext}
+				title={title}
+				url={url}
+				id={id}
+				setDownloadPercent={setDownloadPercent}
+				downloadBarPercent={downloadBarPercent}
+				setDownloadBarPercent={setDownloadBarPercent}
+			/>
 		</div>
 	);
 };

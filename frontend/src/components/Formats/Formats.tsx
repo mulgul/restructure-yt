@@ -53,7 +53,11 @@ export const Formats = ({ meta, url }: IMetadataProp) => {
 		<div className="formats-container">
 			<div className="formats-title">
 				<h2>Downloadable Formats:</h2>
-				{parseInt(downloadPercent) != 0 ? <p className='download-percent'>{downloadPercent}%</p> : <p></p>}
+				{parseInt(downloadPercent) != 0 ? (
+					<p className="download-percent">{downloadPercent}%</p>
+				) : (
+					<p></p>
+				)}
 			</div>
 			<div className="format-cards-parent">
 				{filterFormats(meta.formats).map((format) => (
