@@ -7,7 +7,8 @@
 
 .button-primary {
     height: 100%;
-    width: 65%;
+    width: 55%;
+    min-width: 35px;
     color: #211E1E;
     background: none;
     border: none;

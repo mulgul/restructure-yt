@@ -24,17 +24,17 @@
 }
 
 .bad-link {
-    border: solid 1px rgb(234, 92, 92);
+    border: solid 1px #b43218;
 }
 
 .good-link {
-    border-color: rgb(23, 202, 23);
+    border-color: #189AB4;
 }
 
 .url-button {
     height: 38px;
     width: 65px;
-    background: rgb(23, 112, 106);
+    background: #189AB4;
     color: #f9f9f9;
     border-radius: 7px;
     border: 1px solid transparent;
@@ -44,6 +44,5 @@
 }
 
 .url-button:hover {
-    background: transparent;
-    border: 2px solid rgb(23, 112, 106);
+    box-shadow: rgb(0 0 0 / 50%) 0px 2px 4px 0px;
 }
