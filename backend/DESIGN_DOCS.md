@@ -39,6 +39,8 @@ Headers:
 
 ### `/audio/download/retrieve?title={string}&ext={string}`
 
+Summary: This requires the file to be downloaded already via: `/audio/download/event`.
+
 **Headers:**
 ```
 Headers:
@@ -59,4 +61,19 @@ https://gist.github.com/AgentOak/34d47c65b1d28829bb17c24c04a0096f
 
 https://forums.bunsenlabs.org/viewtopic.php?id=7637
 
-### `/audio/download/`
+### `/audio/download?encodedURI={string}&format={string}&title={string}&ext={string}`
+
+Summary: This will download the audio file from scratch and send the file.
+
+**Headers:**
+```
+Headers:
+{
+    Content-type: audio/*
+}
+```
+
+**Response:**
+```
+Audio File.
+```
