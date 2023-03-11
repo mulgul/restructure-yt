@@ -35,7 +35,7 @@ export const FormatCard = ({
 		<div
 			className="format-card-container"
 			style={{
-				background: `linear-gradient(90deg, #8c35ff ${downloadNum}%, #f9f9f9 ${downloadNum}%)`,
+				background: `linear-gradient(90deg, #189AB4 ${downloadNum}%, #f9f9f9 ${downloadNum}%)`,
 			}}
 		>
 			<div className="format-codec">
