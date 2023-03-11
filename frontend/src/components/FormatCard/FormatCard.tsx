@@ -30,7 +30,6 @@ export const FormatCard = ({
 }: IFormatCardProps) => {
 	const [downloadBarPercent, setDownloadBarPercent] = useState<string>('');
 	const downloadNum = parseInt(downloadBarPercent);
-	console.log(downloadNum, 'DOWNLOAD NUM');
 
 	return (
 		<div
