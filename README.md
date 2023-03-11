@@ -1,6 +1,7 @@
 ## Youtube-audio-downloader
 
 This is a full service REST api, and UI used for downloading audio files from youtube videos. 
+![Restructure](public/rescructure-demo.gif)
 
 ## Requirements
 
